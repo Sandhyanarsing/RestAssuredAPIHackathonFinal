@@ -18,7 +18,7 @@ public class RequestSpec extends AbstractMethod {
 		req.setBasePath(endpoint);
 		req.setContentType(ContentType.JSON);
 		req.setAccept(ContentType.JSON);
-		req.addHeader("Authorization", "Bearer "+auth.setAuthorisation());
+		req.addHeader("Authorization", "Bearer "+auth.getAuthorisation());
 		RequestSpecification reqspec = req.build();
 		return reqspec;
 	}
