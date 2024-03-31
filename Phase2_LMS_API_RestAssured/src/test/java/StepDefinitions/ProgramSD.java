@@ -27,6 +27,7 @@ public class ProgramSD {
 	RequestSpec RS = new RequestSpec();
 	List<Map<String, String>>data;
 	List<Response> responses = new ArrayList<>();
+	List<String> programIDs = new ArrayList<>();
 	String retrievedtoken;
 	
 	
@@ -37,8 +38,8 @@ public class ProgramSD {
 
 	@Given("Admin creates POST Request for the LMS with request body")
 	public void admin_creates_post_request_for_the_lms_with_request_body() throws InvalidFormatException, IOException {
-		data = ExcelReader.getData(URLs.ExcelPath, "Sheet2");
-		System.out.println(data);
+		data = ExcelReader.getData(URLs.ExcelPath, "Sheet1");
+		
 		
 		
 		
@@ -54,7 +55,7 @@ public class ProgramSD {
                    "  \"programName\": \"" + data.get(i).get("programName") + "\",\n" +
                    "  \"programStatus\": \"" + data.get(i).get("programStatus") + "\"\n" +
                    "}";
-			//System.out.println(requestBody);
+			
 		
 		response = RestAssured
 	    		   .given()
@@ -72,6 +73,9 @@ public class ProgramSD {
 	public void admin_receives_appropriate_status_code_with_response_body()  {
 		for (Response response : responses) {
             response.then().log().all();
+            String pID = response.jsonPath().getString("programId");
+            programIDs.add(pID);
+            
             //response.then().statusCode(201);
             if(response.statusCode()==201) {
             	System.out.println("sucess");
