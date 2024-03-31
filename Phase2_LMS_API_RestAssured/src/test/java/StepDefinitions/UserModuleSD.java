@@ -31,6 +31,7 @@ public class UserModuleSD {
 	List<Response> responses = new ArrayList<>();
 	List<String> userIds = new ArrayList<>();
 	String userId;
+	String userID;
 	//String[] userIdVariables = new String[userIds.size()];
 	
 	
@@ -77,18 +78,20 @@ public class UserModuleSD {
                 assertions asserts = new assertions(response);
                 asserts.assertUserModule(); 
             	
-            }else if(response.statusCode()==400) {
+            }
+            else if(response.statusCode()==400) {
             	String message = response.jsonPath().getString("message");
             	LoggerLoad.info( message);
-	}
+            	}
 
-}
+}     
+		userId = Authorization.scenarioContext.setContext("userId", userId);
 	}
 
 
 @Given("Admin creates GET Request")
 public void admin_creates_get_request() {
-   
+    
 }
 
 @When("Admin sends HTTPS Request with GET All Roles endpoint")
@@ -127,14 +130,14 @@ public void admin_sends_https_request_with_valid_endpoint() {
 	response = RestAssured
 	 		   .given()
 	 		   .spec(RS.createReq(URLs.getAllRoles))
-	 		   .param("R01")
+	 		   .pathParam("roleId", "R01")
 	 		   .when().get();
 }
 
 @Given("Admin creates PUT Request with valid request body")
 public void admin_creates_put_request_with_valid_request_body() {
 	
-	
+	userID = auth.setUserID();
     
 }
 
@@ -144,7 +147,7 @@ public void admin_sends_https_request_with_endpoint() {
 	response = RestAssured
 	 		   .given()
 	 		   .spec(RS.createReq(URLs.UpdateUserByRoleID))
-	 		   .pathParam("userID","U282")
+	 		   .pathParam("userID",userID)
 	 		   .body(requestBody)
 	 		   .when().put();
 	response.then().log().all();
@@ -158,7 +161,7 @@ public void admin_receives_ok_status_with_response_body(Integer int1) {
 
 @Given("Admin creates PUT Request with invalid request body")
 public void admin_creates_put_request_with_invalid_request_body() {
-    
+	userID = auth.setUserID();
 }
 
 @When("Admin sends HTTPS Request with endpoint and invalid request body")
@@ -167,7 +170,7 @@ public void admin_sends_https_request_with_endpoint_and_invalid_request_body() {
 	response = RestAssured
 	 		   .given()
 	 		   .spec(RS.createReq(URLs.UpdateUserByRoleID))
-	 		   .pathParam("userID","U282")
+	 		   .pathParam("userID",userID)
 	 		   .body(requestBody)
 	 		   .when().put();
 	response.then().log().all();
@@ -197,11 +200,12 @@ public void admin_sends_https_request_with_endpoint_and_invalid_admin_id() {
 
 @When("Admin sends HTTPS Request with endpoint with existing ADmin id")
 public void admin_sends_https_request_with_endpoint_with_existing_a_dmin_id() {
+	userID = auth.setUserID();
 	String requestBody = payload.UpdateUserByRoleIDwithInvReqBody();
 	response = RestAssured
 	 		   .given()
 	 		   .spec(RS.createReq(URLs.UpdateUserByRoleID))
-	 		   .pathParam("userID","U202")
+	 		   .pathParam("userID",userID)
 	 		   .body(requestBody)
 	 		   .when().put();
 	response.then().log().all();
@@ -213,7 +217,7 @@ public void admin_receives_not_found_status_with_message_and_boolean_success_det
 }
 @Given("Admin creates GET Request with valid AdminId")
 public void admin_creates_get_request_with_valid_admin_id() {
-   
+	userID = auth.setUserID();
 }
 
 @Given("Admin creates GET Request with invalid AdminId")
@@ -223,11 +227,12 @@ public void admin_creates_get_request_with_invalid_admin_id() {
 
 @When("Admin sends HTTPS Request with endpoint with AdminID")
 public void admin_sends_https_request_with_endpoint_with_admin_id() {
+	userID = auth.setUserID();
 	String requestBody = payload.UpdateUserRoleStatusByAdminID();
 	response = RestAssured
 	 		   .given()
 	 		   .spec(RS.createReq(URLs.UpdateUserRoleStatusByAdminID))
-	 		   .pathParam("userID","U202")
+	 		   .pathParam("userID",userID)
 	 		   .body(requestBody)
 	 		   .when().put();
 	response.then().log().all();
@@ -240,11 +245,12 @@ public void admin_receives_ok_status_with_response_message(Integer int1) {
 
 @When("Admin sends HTTPS Request with endpoint with invalid Rolestatus")
 public void admin_sends_https_request_with_endpoint_with_invalid_rolestatus() {
+	userID = auth.setUserID();
 	String requestBody = payload.UpdateUserRoleStatusByInvRoleStatus();
 	response = RestAssured
 	 		   .given()
 	 		   .spec(RS.createReq(URLs.UpdateUserRoleStatusByAdminID))
-	 		   .pathParam("userID","U202")
+	 		   .pathParam("userID",userID)
 	 		   .body(requestBody)
 	 		   .when().put();
 	response.then().log().all();
@@ -264,22 +270,24 @@ public void admin_sends_https_request_with_endpoint_with_inv_admin_id() {
 
 @When("Admin sends HTTPS Request with endpoint with nonexisting\\/unassigned RoleID")
 public void admin_sends_https_request_with_endpoint_with_nonexisting_unassigned_role_id() {
+	userID = auth.setUserID();
 	String requestBody = payload.UpdateUserRoleStatusByInvRoleID();
 	response = RestAssured
 	 		   .given()
 	 		   .spec(RS.createReq(URLs.UpdateUserRoleStatusByAdminID))
-	 		   .pathParam("userID","ABCD")
+	 		   .pathParam("userID",userID)
 	 		   .body(requestBody)
 	 		   .when().put();
 	response.then().log().all();
 }
 @When("Admin sends HTTPS Request with endpoint and program\\/batch")
 public void admin_sends_https_request_with_endpoint_and_program_batch() {
+	userID = auth.setUserID();
 	String requestBody = payload.UpdateUserRoleProgramBatchStatus();
 	response = RestAssured
 	 		   .given()
 	 		   .spec(RS.createReq(URLs.UpdateUserRoleProgramBatchStatus))
-	 		   .pathParam("userID","U202")
+	 		   .pathParam("userID",userID)
 	 		   .body(requestBody)
 	 		   .when().put();
 	response.then().log().all();
@@ -287,11 +295,13 @@ public void admin_sends_https_request_with_endpoint_and_program_batch() {
 
 @When("Admin sends HTTPS Request with endpoint and program\\/batch with invalid data")
 public void admin_sends_https_request_with_endpoint_and_program_batch_with_invalid_data() {
+	userID = auth.setUserID();
+	
 	String requestBody = payload.UpdateUserRoleProgramBatchStatuswithInvData();
 	response = RestAssured
 	 		   .given()
 	 		   .spec(RS.createReq(URLs.UpdateUserRoleProgramBatchStatus))
-	 		   .pathParam("userID","U202")
+	 		   .pathParam("userID",userID)
 	 		   .body(requestBody)
 	 		   .when().put();
 	response.then().log().all();
@@ -310,11 +320,12 @@ public void admin_creates_put_request_with_valid_data_in_request_body_with_inval
 }
 @When("Admin sends HTTPS Request to update the Admin login status by Admin ID")
 public void admin_sends_https_request_to_update_the_admin_login_status_by_admin_id() {
+	userID = auth.setUserID();
 	String requestBody = payload.UpdateAdminLoginStatusyAdminID();
 	response = RestAssured
 	 		   .given()
 	 		   .spec(RS.createReq(URLs.UpdateAdminLoginStatusyAdminID))
-	 		   .pathParam("userId","U202")
+	 		   .pathParam("userId",userID)
 	 		   .body(requestBody)
 	 		   .when().put();
 	response.then().log().all();
@@ -322,11 +333,13 @@ public void admin_sends_https_request_to_update_the_admin_login_status_by_admin_
 
 @When("Admin sends HTTPS Request to update the Admin login status by Admin ID and invalid data in request body")
 public void admin_sends_https_request_to_update_the_admin_login_status_by_admin_id_and_invalid_data_in_request_body() {
+	userID = auth.setUserID();
+	
 	String requestBody = payload.UpdateAdminLoginStatusyAdminIDAndInvData();
 	response = RestAssured
 	 		   .given()
 	 		   .spec(RS.createReq(URLs.UpdateAdminLoginStatusyAdminID))
-	 		   .pathParam("userId","U202")
+	 		   .pathParam("userId",userID)
 	 		   .body(requestBody)
 	 		   .when().put();
 	response.then().log().all();
@@ -351,11 +364,13 @@ public void admin_creates_put_request_with_valid_data_in_request_body_values_onl
 
 @When("Admin sends HTTPS request with endpoiint to update admin info")
 public void admin_sends_https_request_with_endpoiint_to_update_admin_info() {
+	userID = auth.setUserID();
+	
 	String requestBody = payload.UpdateAdminInfoOnlyMandateFileds();
 	response = RestAssured
 	 		   .given()
 	 		   .spec(RS.createReq(URLs.UpdateAdminInfo))
-	 		   .pathParam("userId","U202")
+	 		   .pathParam("userId",userID)
 	 		   .body(requestBody)
 	 		   .when().put();
 	response.then().log().all();
@@ -367,11 +382,12 @@ public void admin_creates_put_request_with_valid_data_in_request_body_values_all
 
 @When("Admin sends HTTPS request with endpoiint to update admin info with all fields")
 public void admin_sends_https_request_with_endpoiint_to_update_admin_info_with_all_fields() {
+	userID = auth.setUserID();
 	String requestBody = payload.UpdateAdminInfoWithAllFileds();
 	response = RestAssured
 	 		   .given()
 	 		   .spec(RS.createReq(URLs.UpdateAdminInfo))
-	 		   .pathParam("userId","U202")
+	 		   .pathParam("userId",userID)
 	 		   .body(requestBody)
 	 		   .when().put();
 	response.then().log().all();
@@ -384,11 +400,13 @@ public void admin_creates_put_request_with_request_body_with_inv_data() {
 
 @When("Admin sends HTTPS Request to update the Admin info by Admin ID and invalid data")
 public void admin_sends_https_request_to_update_the_admin_info_by_admin_id_and_invalid_data() {
+	userID = auth.setUserID();
+	
 	String requestBody = payload.UpdateAdminInfoWithInvData();
 	response = RestAssured
 	 		   .given()
 	 		   .spec(RS.createReq(URLs.UpdateAdminInfo))
-	 		   .pathParam("userId","U202")
+	 		   .pathParam("userId",userID)
 	 		   .body(requestBody)
 	 		   .when().put();
 	response.then().log().all();

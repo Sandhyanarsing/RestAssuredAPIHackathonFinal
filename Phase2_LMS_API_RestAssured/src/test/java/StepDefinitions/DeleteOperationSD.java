@@ -2,6 +2,7 @@ package StepDefinitions;
 
 import EndPoints.URLs;
 import TestRequest.RequestSpec;
+import TokenRetreiver.Authorization;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -13,10 +14,12 @@ public class DeleteOperationSD {
 	Response response;
 	
     RequestSpec RS = new RequestSpec();
+    Authorization auth = new Authorization();
+    String userID;
 	
 	@Given("Admin creates DELETE Request to delete Admin details")
 	public void admin_creates_delete_request_to_delete_admin_details() {
-	   
+		userID = auth.setUserID();
 	}
 
 	@When("Admin sends HTTPS request with endpoiint to delete Admin details")
@@ -24,14 +27,14 @@ public class DeleteOperationSD {
 		response = RestAssured
 		 		   .given()
 		 		   .spec(RS.createReq(URLs.DeleteUser))
-		 		   .pathParam("userID","Abc")
+		 		   .pathParam("userID",userID)
 		 		   .when().delete();
 		response.then().log().all();
 	}
 
 	@Then("Admin receives {int} Ok status with message")
 	public void admin_receives_ok_status_with_message(Integer int1) {
-	    
+	    response.then().statusCode(200);
 	}
 
 	@When("Admin sends HTTPS request with endpoiint to delete Admin details with Inv AdminID")
