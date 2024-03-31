@@ -11,7 +11,7 @@ public class Authorization {
 	
 		String retrievedToken =scenarioContext.getContext("Token", token);
 		//RestAssured.given().header("Authorization", "Bearer "+ retrievedToken);
-		System.out.println(retrievedToken);
+		//System.out.println(retrievedToken);
 		return retrievedToken;
 	}
 }
