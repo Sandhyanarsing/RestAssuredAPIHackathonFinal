@@ -24,6 +24,8 @@ import io.restassured.filter.log.LogDetail;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.response.Response;
+import lmsApiConstants.LMSConstants;
+import lmsApiConstants.LMSConstants;
 import payloads.payload;
 
 public class UserModuleSD {
@@ -37,20 +39,20 @@ public class UserModuleSD {
 	List<Response> responses = new ArrayList<>();
 	List<String> userIds = new ArrayList<>();
 	String userId;
-	String userID;
+	//String userID;
 	//String[] userIdVariables = new String[userIds.size()];
 	
 	
 
 	
-	@Given("Admin creates POST request to create users with all valid and invalid requests")
-	public void admin_creates_post_request_to_create_users_with_all_valid_and_invalid_requests() throws InvalidFormatException, IOException {
+	@Given("Admin creates POST request to create users with all valid and invalid requests forUserModule")
+	public void admin_creates_post_request_to_create_users_with_all_valid_and_invalid_requests_forUserModule() throws InvalidFormatException, IOException {
 		data2 = ExcelReader.getData(URLs.ExcelPath, "Sheet2");
 		
 	}
 
-	@When("Admin sends HTTPS Request to create users with endpoint")
-	public void admin_sends_https_request_to_create_users_with_endpoint() throws IOException {
+	@When("Admin sends HTTPS Request to create users with endpoint UM")
+	public void admin_sends_https_request_to_create_users_with_endpoint_UM() throws IOException {
 		
  File logFile = new File("logs.txt");
 		 
@@ -87,6 +89,7 @@ public class UserModuleSD {
                 for(String userID:userIds ) 
                      {
                 	 System.out.println("User ID: " + userID);
+                	 userId = Authorization.scenarioContext.setContext("userId", userId);
                 	  }
                 assertions asserts = new assertions(response);
                 asserts.assertUserModule(); 
@@ -98,109 +101,108 @@ public class UserModuleSD {
             	}
 
 }     
-		userId = Authorization.scenarioContext.setContext("userId", userId);
 	}
 
 
-@Given("Admin creates GET Request")
-public void admin_creates_get_request() {
+@Given("Admin creates GET Request forUserModule")
+public void admin_creates_get_request_forUserModule() {
     
 }
 
-@When("Admin sends HTTPS Request with GET All Roles endpoint")
-public void admin_sends_https_request_with_get_all_roles_endpoint() {
+@When("Admin sends HTTPS Request with GET All Roles endpoint forUserModule")
+public void admin_sends_https_request_with_get_all_roles_endpoint_forUserModule() {
 	response = RestAssured
  		   .given()
  		   .spec(RS.createReq(URLs.getAllRoles))
  		   .when().get();
 }
 
-@Then("Admin receives {int} OK")
-public void admin_receives_ok(Integer int1) {
+@Then("Admin receives {int} OK forUserModule")
+public void admin_receives_ok_forUserModule(Integer int1) {
     response.then().statusCode(200).log().all();
     String statusline = response.statusLine();
     LoggerLoad.info(statusline);
     
 }
 
-@When("Admin sends HTTPS Request with invalid endpoint")
-public void admin_sends_https_request_with_invalid_endpoint() {
+@When("Admin sends HTTPS Request with invalid endpoint forUserModule")
+public void admin_sends_https_request_with_invalid_endpoint_forUserModule() {
 	response = RestAssured
 	 		   .given()
 	 		   .spec(RS.createReq(URLs.InvgetAllRoles))
 	 		   .when().get();
 }
 
-@Then("Admin receives status {int} with Not Found error message")
-public void admin_receives_status_with_not_found_error_message(Integer int1) {
+@Then("Admin receives status {int} with Not Found error message forUserModule")
+public void admin_receives_status_with_not_found_error_message_forUserModule(Integer int1) {
 	response.then().statusCode(404).log().all();
     String statusline = response.statusLine();
     LoggerLoad.info(statusline);
 }
 
-@When("Admin sends HTTPS Request with valid endpoint")
-public void admin_sends_https_request_with_valid_endpoint() {
+@When("Admin sends HTTPS Request with valid endpoint forUserModule")
+public void admin_sends_https_request_with_valid_endpoint_forUserModule() {
 	response = RestAssured
 	 		   .given()
-	 		   .spec(RS.createReq(URLs.getAllRoles))
+	 		   .spec(RS.createReq(URLs.getAllAdmins))
 	 		   .pathParam("roleId", "R01")
 	 		   .when().get();
 }
 
-@Given("Admin creates PUT Request with valid request body")
-public void admin_creates_put_request_with_valid_request_body() {
+@Given("Admin creates PUT Request with valid request body forUserModule")
+public void admin_creates_put_request_with_valid_request_body_forUserModule() {
 	
-	userID = auth.setUserID();
+	//userID = auth.setUserID();
     
 }
 
-@When("Admin sends HTTPS Request with endpoint")
-public void admin_sends_https_request_with_endpoint() {
+@When("Admin sends HTTPS Request with endpoint forUserModule")
+public void admin_sends_https_request_with_endpoint_forUserModule() {
 	String requestBody = payload.UpdateUserByRoleID();
 	response = RestAssured
 	 		   .given()
 	 		   .spec(RS.createReq(URLs.UpdateUserByRoleID))
-	 		   .pathParam("userID",userID)
+	 		   .pathParam("userID",Authorization.scenarioContext.getContext(LMSConstants.USERID_KEY))
 	 		   .body(requestBody)
 	 		   .when().put();
 	response.then().log().all();
     
 }
 
-@Then("Admin receives {int} OK  Status with response body.")
-public void admin_receives_ok_status_with_response_body(Integer int1) {
+@Then("Admin receives {int} OK  Status with response body forUserModule")
+public void admin_receives_ok_status_with_response_body_forUserModule(Integer int1) {
 	response.then().statusCode(200);
 }
 
-@Given("Admin creates PUT Request with invalid request body")
-public void admin_creates_put_request_with_invalid_request_body() {
-	userID = auth.setUserID();
+@Given("Admin creates PUT Request with invalid request body forUserModule")
+public void admin_creates_put_request_with_invalid_request_body_forUserModule() {
+	//userID = auth.setUserID();
 }
 
-@When("Admin sends HTTPS Request with endpoint and invalid request body")
-public void admin_sends_https_request_with_endpoint_and_invalid_request_body() {
+@When("Admin sends HTTPS Request with endpoint and invalid request body forUserModule")
+public void admin_sends_https_request_with_endpoint_and_invalid_request_body_forUserModule() {
 	String requestBody = payload.UpdateUserByRoleIDwithInvReqBody();
 	response = RestAssured
 	 		   .given()
 	 		   .spec(RS.createReq(URLs.UpdateUserByRoleID))
-	 		   .pathParam("userID",userID)
+	 		   .pathParam("userID",Authorization.scenarioContext.getContext(LMSConstants.USERID_KEY))
 	 		   .body(requestBody)
 	 		   .when().put();
 	response.then().log().all();
 }
 
-@Then("Admin receives {int} Bad Request Status with message and boolean success details")
-public void admin_receives_bad_request_status_with_message_and_boolean_success_details(Integer int1) {
+@Then("Admin receives {int} Bad Request Status with message and boolean success details forUserModule")
+public void admin_receives_bad_request_status_with_message_and_boolean_success_details_forUserModule(Integer int1) {
 	response.then().statusCode(400);
 }
 
-@Given("Admin creates PUT Request with request body")
-public void admin_creates_put_request_with_request_body() {
+@Given("Admin creates PUT Request with request body forUserModule")
+public void admin_creates_put_request_with_request_body_forUserModule() {
    
 }
 
-@When("Admin sends HTTPS Request with endpoint and invalid admin id")
-public void admin_sends_https_request_with_endpoint_and_invalid_admin_id() {
+@When("Admin sends HTTPS Request with endpoint and invalid admin id forUserModule")
+public void admin_sends_https_request_with_endpoint_and_invalid_admin_id_forUserModule() {
 	String requestBody = payload.UpdateUserByRoleIDwithInvReqBody();
 	response = RestAssured
 	 		   .given()
@@ -211,66 +213,66 @@ public void admin_sends_https_request_with_endpoint_and_invalid_admin_id() {
 	response.then().log().all();
 }
 
-@When("Admin sends HTTPS Request with endpoint with existing ADmin id")
-public void admin_sends_https_request_with_endpoint_with_existing_a_dmin_id() {
-	userID = auth.setUserID();
+@When("Admin sends HTTPS Request with endpoint with existing ADmin id forUserModule")
+public void admin_sends_https_request_with_endpoint_with_existing_a_dmin_id_forUserModule() {
+	// = auth.setUserID();
 	String requestBody = payload.UpdateUserByRoleIDwithInvReqBody();
 	response = RestAssured
 	 		   .given()
 	 		   .spec(RS.createReq(URLs.UpdateUserByRoleID))
-	 		   .pathParam("userID",userID)
+	 		   .pathParam("userID",Authorization.scenarioContext.getContext(LMSConstants.USERID_KEY))
 	 		   .body(requestBody)
 	 		   .when().put();
 	response.then().log().all();
 }
 
-@Then("Admin receives {int} Not Found Status with message and boolean success details")
-public void admin_receives_not_found_status_with_message_and_boolean_success_details(Integer int1) {
+@Then("Admin receives {int} Not Found Status with message and boolean success details forUserModule")
+public void admin_receives_not_found_status_with_message_and_boolean_success_details_forUserModule(Integer int1) {
 	response.then().statusCode(404);
 }
-@Given("Admin creates GET Request with valid AdminId")
-public void admin_creates_get_request_with_valid_admin_id() {
-	userID = auth.setUserID();
+@Given("Admin creates GET Request with valid AdminId forUserModule")
+public void admin_creates_get_request_with_valid_admin_id_forUserModule() {
+	//userID = auth.setUserID();
 }
 
-@Given("Admin creates GET Request with invalid AdminId")
-public void admin_creates_get_request_with_invalid_admin_id() {
+@Given("Admin creates GET Request with invalid AdminId forUserModule")
+public void admin_creates_get_request_with_invalid_admin_id_forUserModule() {
     
 }
 
-@When("Admin sends HTTPS Request with endpoint with AdminID")
-public void admin_sends_https_request_with_endpoint_with_admin_id() {
-	userID = auth.setUserID();
+@When("Admin sends HTTPS Request with endpoint with AdminID forUserModule")
+public void admin_sends_https_request_with_endpoint_with_admin_id_forUserModule() {
+	//userID = auth.setUserID();
 	String requestBody = payload.UpdateUserRoleStatusByAdminID();
 	response = RestAssured
 	 		   .given()
 	 		   .spec(RS.createReq(URLs.UpdateUserRoleStatusByAdminID))
-	 		   .pathParam("userID",userID)
+	 		   .pathParam("userID",Authorization.scenarioContext.getContext(LMSConstants.USERID_KEY))
 	 		   .body(requestBody)
 	 		   .when().put();
 	response.then().log().all();
 }
 
-@Then("Admin receives {int} Ok Status with response message")
-public void admin_receives_ok_status_with_response_message(Integer int1) {
+@Then("Admin receives {int} Ok Status with response message forUserModule")
+public void admin_receives_ok_status_with_response_message_forUserModule(Integer int1) {
 	response.then().statusCode(200);
 }
 
-@When("Admin sends HTTPS Request with endpoint with invalid Rolestatus")
-public void admin_sends_https_request_with_endpoint_with_invalid_rolestatus() {
-	userID = auth.setUserID();
+@When("Admin sends HTTPS Request with endpoint with invalid Rolestatus forUserModule")
+public void admin_sends_https_request_with_endpoint_with_invalid_rolestatus_forUserModule() {
+	//userID = auth.setUserID();
 	String requestBody = payload.UpdateUserRoleStatusByInvRoleStatus();
 	response = RestAssured
 	 		   .given()
 	 		   .spec(RS.createReq(URLs.UpdateUserRoleStatusByAdminID))
-	 		   .pathParam("userID",userID)
+	 		   .pathParam("userID",Authorization.scenarioContext.getContext(LMSConstants.USERID_KEY))
 	 		   .body(requestBody)
 	 		   .when().put();
 	response.then().log().all();
 }
 
-@When("Admin sends HTTPS Request with endpoint with invAdminID")
-public void admin_sends_https_request_with_endpoint_with_inv_admin_id() {
+@When("Admin sends HTTPS Request with endpoint with invAdminID forUserModule")
+public void admin_sends_https_request_with_endpoint_with_inv_admin_id_forUserModule() {
 	String requestBody = payload.UpdateUserRoleStatusByAdminID();
 	response = RestAssured
 	 		   .given()
@@ -281,47 +283,47 @@ public void admin_sends_https_request_with_endpoint_with_inv_admin_id() {
 	response.then().log().all();
 }
 
-@When("Admin sends HTTPS Request with endpoint with nonexisting\\/unassigned RoleID")
-public void admin_sends_https_request_with_endpoint_with_nonexisting_unassigned_role_id() {
-	userID = auth.setUserID();
+@When("Admin sends HTTPS Request with endpoint with nonexisting\\/unassigned RoleID forUserModule")
+public void admin_sends_https_request_with_endpoint_with_nonexisting_unassigned_role_id_forUserModule() {
+	//userID = auth.setUserID();
 	String requestBody = payload.UpdateUserRoleStatusByInvRoleID();
 	response = RestAssured
 	 		   .given()
 	 		   .spec(RS.createReq(URLs.UpdateUserRoleStatusByAdminID))
-	 		   .pathParam("userID",userID)
+	 		   .pathParam("userID",Authorization.scenarioContext.getContext(LMSConstants.USERID_KEY))
 	 		   .body(requestBody)
 	 		   .when().put();
 	response.then().log().all();
 }
-@When("Admin sends HTTPS Request with endpoint and program\\/batch")
-public void admin_sends_https_request_with_endpoint_and_program_batch() {
-	userID = auth.setUserID();
+@When("Admin sends HTTPS Request with endpoint and program\\/batch forUserModule")
+public void admin_sends_https_request_with_endpoint_and_program_batch_forUserModule() {
+	//userID = auth.setUserID();
 	String requestBody = payload.UpdateUserRoleProgramBatchStatus();
 	response = RestAssured
 	 		   .given()
 	 		   .spec(RS.createReq(URLs.UpdateUserRoleProgramBatchStatus))
-	 		   .pathParam("userID",userID)
+	 		   .pathParam("userID",Authorization.scenarioContext.getContext(LMSConstants.USERID_KEY))
 	 		   .body(requestBody)
 	 		   .when().put();
 	response.then().log().all();
 }
 
-@When("Admin sends HTTPS Request with endpoint and program\\/batch with invalid data")
-public void admin_sends_https_request_with_endpoint_and_program_batch_with_invalid_data() {
-	userID = auth.setUserID();
+@When("Admin sends HTTPS Request with endpoint and program\\/batch with invalid data forUserModule")
+public void admin_sends_https_request_with_endpoint_and_program_batch_with_invalid_data_forUserModule() {
+	//userID = auth.setUserID();
 	
 	String requestBody = payload.UpdateUserRoleProgramBatchStatuswithInvData();
 	response = RestAssured
 	 		   .given()
 	 		   .spec(RS.createReq(URLs.UpdateUserRoleProgramBatchStatus))
-	 		   .pathParam("userID",userID)
+	 		   .pathParam("userID",Authorization.scenarioContext.getContext(LMSConstants.USERID_KEY))
 	 		   .body(requestBody)
 	 		   .when().put();
 	response.then().log().all();
 }
 
-@When("Admin creates PUT Request with valid data in request body with invalid adminID")
-public void admin_creates_put_request_with_valid_data_in_request_body_with_invalid_admin_id() {
+@When("Admin creates PUT Request with valid data in request body with invalid adminID forUserModule")
+public void admin_creates_put_request_with_valid_data_in_request_body_with_invalid_admin_id_forUserModule() {
 	String requestBody = payload.UpdateUserRoleProgramBatchStatus();
 	response = RestAssured
 	 		   .given()
@@ -331,35 +333,35 @@ public void admin_creates_put_request_with_valid_data_in_request_body_with_inval
 	 		   .when().put();
 	response.then().log().all();
 }
-@When("Admin sends HTTPS Request to update the Admin login status by Admin ID")
-public void admin_sends_https_request_to_update_the_admin_login_status_by_admin_id() {
-	userID = auth.setUserID();
+@When("Admin sends HTTPS Request to update the Admin login status by Admin ID forUserModule")
+public void admin_sends_https_request_to_update_the_admin_login_status_by_admin_id_forUserModule() {
+	//userID = auth.setUserID();
 	String requestBody = payload.UpdateAdminLoginStatusyAdminID();
 	response = RestAssured
 	 		   .given()
 	 		   .spec(RS.createReq(URLs.UpdateAdminLoginStatusyAdminID))
-	 		   .pathParam("userId",userID)
+	 		   .pathParam("userId",Authorization.scenarioContext.getContext(LMSConstants.USERID_KEY))
 	 		   .body(requestBody)
 	 		   .when().put();
 	response.then().log().all();
 }
 
-@When("Admin sends HTTPS Request to update the Admin login status by Admin ID and invalid data in request body")
-public void admin_sends_https_request_to_update_the_admin_login_status_by_admin_id_and_invalid_data_in_request_body() {
-	userID = auth.setUserID();
+@When("Admin sends HTTPS Request to update the Admin login status by Admin ID and invalid data in request body forUserModule")
+public void admin_sends_https_request_to_update_the_admin_login_status_by_admin_id_and_invalid_data_in_request_body_forUserModule() {
+	//userID = auth.setUserID();
 	
 	String requestBody = payload.UpdateAdminLoginStatusyAdminIDAndInvData();
 	response = RestAssured
 	 		   .given()
 	 		   .spec(RS.createReq(URLs.UpdateAdminLoginStatusyAdminID))
-	 		   .pathParam("userId",userID)
+	 		   .pathParam("userId",Authorization.scenarioContext.getContext(LMSConstants.USERID_KEY))
 	 		   .body(requestBody)
 	 		   .when().put();
 	response.then().log().all();
 }
 
-@When("Admin sends HTTPS Request to update the Admin login status with invalid AdminId")
-public void admin_sends_https_request_to_update_the_admin_login_status_with_invalid_admin_id() {
+@When("Admin sends HTTPS Request to update the Admin login status with invalid AdminId forUserModule")
+public void admin_sends_https_request_to_update_the_admin_login_status_with_invalid_admin_id_forUserModule() {
 	String requestBody = payload.UpdateAdminLoginStatusyAdminID();
 	response = RestAssured
 	 		   .given()
@@ -370,68 +372,68 @@ public void admin_sends_https_request_to_update_the_admin_login_status_with_inva
 	response.then().log().all();
 }
 
-@Given("Admin creates PUT Request with valid data in request body \\(values only in mandatory fields)")
-public void admin_creates_put_request_with_valid_data_in_request_body_values_only_in_mandatory_fields() {
+@Given("Admin creates PUT Request with valid data in request body \\(values only in mandatory fields) forUserModule")
+public void admin_creates_put_request_with_valid_data_in_request_body_values_only_in_mandatory_fields_forUserModule() {
     
 }
 
-@When("Admin sends HTTPS request with endpoiint to update admin info")
-public void admin_sends_https_request_with_endpoiint_to_update_admin_info() {
-	userID = auth.setUserID();
+@When("Admin sends HTTPS request with endpoiint to update admin info forUserModule")
+public void admin_sends_https_request_with_endpoiint_to_update_admin_info_forUserModule() {
+	//userID = auth.setUserID();
 	
 	String requestBody = payload.UpdateAdminInfoOnlyMandateFileds();
 	response = RestAssured
 	 		   .given()
 	 		   .spec(RS.createReq(URLs.UpdateAdminInfo))
-	 		   .pathParam("userId",userID)
+	 		   .pathParam("userId",Authorization.scenarioContext.getContext(LMSConstants.USERID_KEY))
 	 		   .body(requestBody)
 	 		   .when().put();
 	response.then().log().all();
 }
 
-@Given("Admin creates PUT Request with valid data in request body \\(values all fields)")
-public void admin_creates_put_request_with_valid_data_in_request_body_values_all_fields() {
+@Given("Admin creates PUT Request with valid data in request body \\(values all fields) forUserModule")
+public void admin_creates_put_request_with_valid_data_in_request_body_values_all_fields_forUserModule() {
 }
 
-@When("Admin sends HTTPS request with endpoiint to update admin info with all fields")
-public void admin_sends_https_request_with_endpoiint_to_update_admin_info_with_all_fields() {
-	userID = auth.setUserID();
+@When("Admin sends HTTPS request with endpoiint to update admin info with all fields forUserModule")
+public void admin_sends_https_request_with_endpoiint_to_update_admin_info_with_all_fields_forUserModule() {
+	//userID = auth.setUserID();
 	String requestBody = payload.UpdateAdminInfoWithAllFileds();
 	response = RestAssured
 	 		   .given()
 	 		   .spec(RS.createReq(URLs.UpdateAdminInfo))
-	 		   .pathParam("userId",userID)
+	 		   .pathParam("userId",Authorization.scenarioContext.getContext(LMSConstants.USERID_KEY))
 	 		   .body(requestBody)
 	 		   .when().put();
 	response.then().log().all();
 }
 
-@Given("Admin creates PUT Request with request body with inv data")
-public void admin_creates_put_request_with_request_body_with_inv_data() {
+@Given("Admin creates PUT Request with request body with inv data forUserModule")
+public void admin_creates_put_request_with_request_body_with_inv_data_forUserModule() {
 	
 }
 
-@When("Admin sends HTTPS Request to update the Admin info by Admin ID and invalid data")
-public void admin_sends_https_request_to_update_the_admin_info_by_admin_id_and_invalid_data() {
-	userID = auth.setUserID();
+@When("Admin sends HTTPS Request to update the Admin info by Admin ID and invalid data forUserModule")
+public void admin_sends_https_request_to_update_the_admin_info_by_admin_id_and_invalid_data_forUserModule() {
+	//userID = auth.setUserID();
 	
 	String requestBody = payload.UpdateAdminInfoWithInvData();
 	response = RestAssured
 	 		   .given()
 	 		   .spec(RS.createReq(URLs.UpdateAdminInfo))
-	 		   .pathParam("userId",userID)
+	 		   .pathParam("userId",Authorization.scenarioContext.getContext(LMSConstants.USERID_KEY))
 	 		   .body(requestBody)
 	 		   .when().put();
 	response.then().log().all();
 }
 
-@Given("Admin creates PUT Request with request body inv AdminID")
-public void admin_creates_put_request_with_request_body_inv_admin_id() {
+@Given("Admin creates PUT Request with request body inv AdminID forUserModule")
+public void admin_creates_put_request_with_request_body_inv_admin_id_forUserModule() {
    
 }
 
-@When("Admin sends HTTPS request with endpoiint to update Admin details with invalid AdminId")
-public void admin_sends_https_request_with_endpoiint_to_update_admin_details_with_invalid_admin_id() {
+@When("Admin sends HTTPS request with endpoiint to update Admin details with invalid AdminId forUserModule")
+public void admin_sends_https_request_with_endpoiint_to_update_admin_details_with_invalid_admin_id_forUserModule() {
 	String requestBody = payload.UpdateAdminInfoWithAllFileds();
 	response = RestAssured
 	 		   .given()
@@ -442,5 +444,287 @@ public void admin_sends_https_request_with_endpoiint_to_update_admin_details_wit
 	response.then().log().all();
 }
 
+
+
+@When("Admin sends HTTPS Request with endpoint to get all admin forUserModule")
+public void admin_sends_https_request_with_endpoint_to_get_all_admin_forUserModule() {
+	response = RestAssured
+			.given()
+			.spec(RS.createReq(URLs.AdminwthAllRoles))
+			.when().get();
 }
+
+//@Then("Admin receives {int} OK Status with response body")
+//public void admin_receives_ok_status_with_response_body(Integer int1) {
+//	response.then().log().all().statusCode(200);
+//
+//
+//}
+
+@When("Admin sends HTTPS Request with invalid endpoint to get all admin forUserModule")
+public void admin_sends_https_request_with_invalid_endpoint_to_get_all_admin_forUserModule() {
+	response = RestAssured
+			.given()
+			.spec(RS.createReq(URLs.InvalidendPoint))
+			.param("roleId","R02")
+			.when().get();
+}
+
+//@Then("Admin receives status {int} with Not Found error message")
+//public void admin_receives_status_with_not_found_error_message(Integer int1) {
+//	response.then().log().all().statusCode(404);
+//}
+
+@When("Admin sends HTTPS Request with the appropriate endpoint and filters forUserModule")
+public void admin_sends_https_request_with_the_appropriate_endpoint_and_filters_forUserModule() {
+	response = RestAssured
+			.given()
+			.spec(RS.createReq(URLs.RoleIDV2))
+			.when().get();
+}
+
+@Then("Admin receives {int} OK Status indicating a successful request with filtered results forUserModule")
+public void admin_receives_ok_status_indicating_a_successful_request_with_filtered_results_forUserModule(Integer int1) {
+	response.then().log().all().statusCode(200);
+}
+
+@When("Admin sends HTTPS Request with the appropriate invalid endpoint and filters forUserModule")
+public void admin_sends_https_request_with_the_appropriate_invalid_endpoint_and_filters_forUserModule() {
+	response = RestAssured
+			.given()
+			.spec(RS.createReq(URLs.RoleIDV2Invalid))
+			.when().get();
+
+}
+
+@Then("Admin receives status {int} with Not Found error message for all Admin with filters forUserModule")
+public void admin_receives_status_with_not_found_error_message_for_all_admin_with_filters_forUserModule(Integer int1) {
+	response.then().log().all().statusCode(404);
+}
+
+@Given("Admin creates GET Request for all active admins forUserModule")
+public void admin_creates_get_request_for_all_active_admins_forUserModule() {
+}
+
+@When("Admin sends HTTPS Request with endpoint for all active admins forUserModule")
+public void admin_sends_https_request_with_endpoint_for_all_active_admins_forUserModule() {
+	response = RestAssured
+			.given()
+			.spec(RS.createReq(URLs.GetAllActiveUsers))
+			.when().get();
+
+}
+
+@Then("Admin receives {int} OK for all active admins forUserModule")
+public void admin_receives_ok_for_all_active_admins_forUserModule(Integer int1) {
+	response.then().log().all().statusCode(200);
+	//token = response.jsonPath().getString("token");
+
+}
+
+@When("Admin sends HTTPS Request with invalid endpoint for all active admins forUserModule")
+public void admin_sends_https_request_with_invalid_endpoint_for_all_active_admins_forUserModule() {
+	response = RestAssured
+			.given()
+			.spec(RS.createReq(URLs.GetAllActiveUsersIVEndpoint))
+			.when().get();
+}
+
+@Then("Admin receives status {int} with Not Found error message for all active admins forUserModule")
+public void admin_receives_status_with_not_found_error_message_for_all_active_admins_forUserModule(Integer int1) {
+	response.then().log().all().statusCode(404);
+}
+
+@When("Admin sends HTTPS Request with endpoint for all type of users forUserModule")
+public void admin_sends_https_request_with_endpoint_for_all_type_of_users_forUserModule() {
+	response = RestAssured
+			.given()
+			.spec(RS.createReq(URLs.AllTypeofUsers))
+			.when().get();
+
+}
+
+@Then("Admin  receices {int} OK for all type of users forUserModule")
+public void admin_receices_ok_for_all_type_of_users_forUserModule(Integer int1) {
+	response.then().log().all().statusCode(200);
+
+}
+@When("Admin sends HTTPS Request with invalid endpoint for all type of users forUserModule")
+public void admin_sends_https_request_with_invalid_endpoint_for_all_type_of_users_forUserModule() {
+	response = RestAssured
+			.given()
+			.spec(RS.createReq(URLs.AllTypeofUsersInValid))
+			.when().get();
+}
+@Given("Admin creates GET Request with role id forUserModule")
+public void admin_creates_get_request_with_role_id_forUserModule() {
+	response = RestAssured
+			.given()
+			.spec(RS.createReq(URLs.AllTypeofUsersRollID))
+			.param("roleId","R01")
+			.when().get();
+
+}
+@Then("Admin receices {int} OK for active and inactive admins by role id forUserModule")
+public void admin_receices_ok_for_active_and_inactive_admins_by_role_id_forUserModule(Integer int1) {
+	response.then().log().all().statusCode(200);
+
+}
+
+@Given("Admin creates GET Request with invalid role id forUserModule")
+public void admin_creates_get_request_with_invalid_role_id_forUserModule() {
+
+}
+
+@When("Admin sends HTTPS Request with  active and inactive invalid endpoint forUserModule")
+public void admin_sends_https_request_with_active_and_inactive_invalid_endpoint_forUserModule() {
+	response = RestAssured
+			.given()
+			.spec(RS.createReq(URLs.GetAllActiveUsersIVEndpoint))
+			.when().get();
+
+}
+
+@Then("Admin receices {int} OK for active and incative admins by role ID forUserModule")
+public void admin_receices_ok_for_active_and_incative_admins_by_role_id_forUserModule(Integer int1) {
+	response.then().log().all().statusCode(404);
+
+}
+@Given("Admin creates GET Request with valid batch Id forUserModule")
+public void admin_creates_get_request_with_valid_batch_id_forUserModule() {
+
+
+}
+
+@When("Admin sends HTTPS Request with endpoint with valid batchID forUserModule")
+public void admin_sends_https_request_with_endpoint_with_valid_batch_id_forUserModule() {
+	response = RestAssured
+			.given()
+			.spec(RS.createReq(URLs.GetProgramBatches))
+			.pathParam("Id","8432")
+			.when().get();
+
+}
+
+@Then("Admin receives a response with status code {int} OK forUserModule")
+public void admin_receives_a_response_with_status_code_ok_forUserModule(Integer int1) {
+
+	response.then().log().all().statusCode(200);
+
+}
+
+@Given("Admin creates GET Request  with invalid batchId forUserModule")
+public void admin_creates_get_request_with_invalid_batch_id_forUserModule() {
+}
+
+@When("the Admin sends a GET Request with an invalid batchId to the endpoint forUserModule")
+public void the_admin_sends_a_get_request_with_an_invalid_batch_id_to_the_endpoint_forUserModule() {
+
+	response = RestAssured
+			.given()
+			.spec(RS.createReq(URLs.GetProgramBatchesInVBatchID))
+			.when().get();
+}
+
+@Then("the Admin should receive a {int} Not Found response forUserModule")
+public void the_admin_should_receive_a_not_found_response_forUserModule(Integer int1) {
+	response.then().log().all().statusCode(404);
+
+}
+@Given("Admin creates GET Request with valid batch Id with invalid endpoint forUserModule")
+public void admin_creates_get_request_with_valid_batch_id_with_invalid_endpoint_forUserModule() {
+}
+
+@When("Admin sends HTTPS Request with endpoint with valid batchID with invalid endpoint forUserModule")
+public void admin_sends_https_request_with_endpoint_with_valid_batch_id_with_invalid_endpoint_forUserModule() {
+	response = RestAssured
+			.given()
+			.spec(RS.createReq(URLs.ValidBatchIDandInvalidEndpoint))
+			.pathParam("Id","8432")
+			.when().get();
+
+}
+
+@Then("Admin receives a response with status code {int} Not Found response forUserModule")
+public void admin_receives_a_response_with_status_code_not_found_response_forUserModule(Integer int1) {
+	response.then().log().all().statusCode(404);
+}
+@Given("Admin creates GET Request with valid program Id forUserModule")
+public void admin_creates_get_request_with_valid_program_id_forUserModule() {
+
+}
+
+@When("Admin sends HTTPS Request with endpoint for valid program Id forUserModule")
+public void admin_sends_https_request_with_endpoint_for_valid_program_id_forUserModule() {
+	response = RestAssured
+			.given()
+			.spec(RS.createReq(URLs.ValidProgramID))
+			.pathParam("programId","16363")
+			.when().get();
+}   
+@Given("Admin creates GET Request with invalid program Id forUserModule")
+public void admin_creates_get_request_with_invalid_program_id_forUserModule() {
+
+
+}
+
+@When("Admin sends HTTPS Request with endpoint invalid program Id forUserModule")
+public void admin_sends_https_request_with_endpoint_invalid_program_id_forUserModule() {
+	response = RestAssured
+			.given()
+			.spec(RS.createReq(URLs.InValidProgramID))
+			.pathParam("programId","1636")
+			.when().get();
+}
+@When("Admin sends HTTPS Request with invalid endpoint and valid program Id forUserModule")
+public void admin_sends_https_request_with_invalid_endpoint_and_valid_program_id_forUserModule() {
+	response = RestAssured
+			.given()
+			.spec(RS.createReq(URLs.ValidProgIDWthInvalidEndpoint))
+			.pathParam("programId","16363")
+			.when().get();
+
+}
+@Given("Admin creates GET Request with valid role ID forUserModule")
+public void admin_creates_get_request_with_valid_role_id_forUserModule() {
+
+}
+
+@When("Admin sends HTTPS Request with endpoint with valid role ID forUserModule")
+public void admin_sends_https_request_with_endpoint_with_valid_role_id_forUserModule() {
+	response = RestAssured
+			.given()
+			.spec(RS.createReq(URLs.GetUserByRoleID))
+			.pathParam("roleId","R01")
+			.when().get();
+}
+@Given("Admin creates GET Request for GET with invalid role ID forUserModule")
+public void admin_creates_get_request_for_get_with_invalid_role_id_forUserModule() {
+}
+
+@When("Admin sends HTTPS Request with endpoint and invalid role ID forUserModule")
+public void admin_sends_https_request_with_endpoint_and_invalid_role_id_forUserModule() {
+	response = RestAssured
+			.given()
+			.spec(RS.createReq(URLs.GetUserByInvalidRoleID))
+			.pathParam("roleId","R04")
+			.when().get();
+
+}
+
+@Given("Admin creates GET Request with valid role ID and invalid endpoint forUserModule")
+public void admin_creates_get_request_with_valid_role_id_and_invalid_endpoint_forUserModule () {
+}
+
+@When("Admin sends HTTPS Request with invalid endpoint and valid roleID forUserModule")
+public void admin_sends_https_request_with_invalid_endpoint_and_valid_role_id_forUserModule() {
+	response = RestAssured
+			.given()
+			.spec(RS.createReq(URLs.InvalidEndpointwthValidRoleID))
+			.pathParam("roleId","R01")
+			.when().get();
+}
+}
+
+
 
