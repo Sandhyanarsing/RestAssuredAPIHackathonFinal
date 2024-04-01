@@ -16,6 +16,16 @@ public class URLs {
 	public static String updateBatch ="/batches/{batchId}";
 	public static String updateBatchInvalidEP ="/batches-lms/{batchId}";
 	public static String deleteBatch = "/batches/{id}";
-
+	public static String createUser ="/users/roleStatus";
+	public static String getAllRoles ="/users";
+	public static String getAllAdmins ="/users/roles/{roleId}";
+	public static String InvgetAllRoles ="/uses";
+	public static String UpdateUserByRoleID ="/users/roleId/{userID}";
+	public static String UpdateUserRoleStatusByAdminID ="/users/roleStatus/{userID}";
+	public static String UpdateUserRoleProgramBatchStatus="/users/roleProgramBatchStatus/{userId}";
+	public static String UpdateAdminLoginStatusyAdminID="/users/userLogin/{userId}";
+	public static String UpdateAdminInfo="/users/{userId}";
+	public static String DeleteUser="/users/{userID}";
+	public static String  GetProgramByProgramId = "/programs/{programId}";
 
 }

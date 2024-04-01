@@ -6,13 +6,29 @@ public class Authorization {
 	
 		public static ScenarioContext scenarioContext = new ScenarioContext();
 		String token;
+		String parsedPID;
+		String pNM;
+		String userId;
 		
 	public String getAuthorisation() {	
 	
 		String retrievedToken =scenarioContext.getContext("Token", token);
-		//RestAssured.given().header("Authorization", "Bearer "+ retrievedToken);
-		//System.out.println(retrievedToken);
 		return retrievedToken;
 	}
+	
+	public String setPMProgramID() {	
+	String ProgramID =scenarioContext.getContext("programID", parsedPID);
+	return ProgramID;
+	}
+	
+	public String setPMProgramName() {
+	String ProgramName =scenarioContext.getContext("programName", pNM);
+	return ProgramName;
+}
+	
+	public String setUserID() {
+		String userID =scenarioContext.getContext("userId", userId);
+		return userID;
+}
 }
 

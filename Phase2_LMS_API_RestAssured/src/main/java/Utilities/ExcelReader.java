@@ -67,8 +67,6 @@ public class ExcelReader {
                             .getStringCellValue();
 
 	                if (cell != null) {
-	                    
-
 	                    // Use a DataFormatter to handle different cell types
 	                    String cellValue = dataFormatter.formatCellValue(cell);
 

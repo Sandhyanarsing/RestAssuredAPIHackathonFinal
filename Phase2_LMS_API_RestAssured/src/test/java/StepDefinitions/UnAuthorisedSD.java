@@ -3,6 +3,7 @@ package StepDefinitions;
 import static io.restassured.RestAssured.given;
 
 import EndPoints.URLs;
+import payloads.payload;
 import TestRequest.RequestSpec;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -11,9 +12,11 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 public class UnAuthorisedSD {
+  
 	String requestBody;
 	Response response;
 	RequestSpec RS = new RequestSpec();
+  
 	
 @Given("admin sets Authoization token to No Auth.")
 	public void admin_sets_authoization_token_to_no_auth() {
@@ -38,8 +41,7 @@ public class UnAuthorisedSD {
 public void admin_creates_get_request() {
    
 }
-
-
+  
 @Given("Admin creates GET Request with valid Batch ID_noAuth")
 public void admin_creates_get_request_with_valid_batch_id() {
 
@@ -92,7 +94,28 @@ public void admin_receives_unauthorized_status(Integer int1) {
 
 }
 
+	@When("Admin sends HTTPS Request to create users with endpoint with no auth")
+	public void admin_sends_https_request_to_create_users_with_endpoint_with_no_auth() {
+		 //requestBody = payload.UserRequestBody(data2,i);
+		
+	    response = RestAssured
+    		   .given()
+    		   .spec(RS.NoAuthMethod(URLs.createUser))
+    		   .body(payload.DummyRequestBody())
+    		   .when().post();    
+	}
 
-
+	@When("Admin sends HTTPS Request with GET All Roles endpoint with no auth")
+	public void admin_sends_https_request_with_get_all_roles_endpoint_with_no_auth() {
+		response = RestAssured
+		 		   .given()
+		 		   .spec(RS.NoAuthMethod(URLs.getAllRoles))
+		 		   .when().get();
+	}
+	
+	@Then("Admin receives status {int} with Unauthorized message")
+	public void admin_receives_status_with_unauthorized_message(Integer int1) {
+	    response.then().statusCode(401);
+	}
 
 }
