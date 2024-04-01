@@ -1,3 +1,4 @@
+
 Feature: Request with  no auth
   I want to use this template for my feature file
 
@@ -23,3 +24,19 @@ Feature: Request with  no auth
   Scenario: Check if Admin not able to logout
     When Admin calls Get Https method with valid endpoint No Auth
     Then Verify 401 response displayed Logout
+
+
+
+
+ @tag1
+ Scenario: Check if admin able to create a new Admin with request body without authorization
+ Given Admin creates POST request to create users with all valid and invalid requests
+ When Admin sends HTTPS Request to create users with endpoint with no auth
+ Then Admin receives status 401 with Unauthorized message
+ 
+ @tag2
+ Scenario: Check if admin is able to retreive all the available roles without Authorization
+ Given Admin creates GET Request
+ When Admin sends HTTPS Request with GET All Roles endpoint with no auth
+ Then Admin receives status 401 with Unauthorized message
+

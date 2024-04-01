@@ -1,6 +1,8 @@
 package Utilities;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -9,15 +11,31 @@ import java.util.Map;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelReader {
 	
+	//Test comments
 	public static int totalRow;
+	public FileInputStream fi;
+	public FileOutputStream fo;
+	public XSSFWorkbook workbook;
+	public XSSFSheet sheet;
+	public XSSFRow row;
+	public XSSFCell cell;
+	public CellStyle style;   
+	String path;
+
+
 
 	public static List<Map<String, String>> getData(String excelFilePath, String sheetName)
 			throws InvalidFormatException, IOException {
@@ -45,18 +63,17 @@ public class ExcelReader {
 
 	            for (int currentColumn = 0; currentColumn < totalColumn; currentColumn++) {
 	                Cell cell = row.getCell(currentColumn);
+	                String columnHeaderName = sheet.getRow(sheet.getFirstRowNum()).getCell(currentColumn)
+                            .getStringCellValue();
 
 	                if (cell != null) {
-	                    String columnHeaderName = sheet.getRow(sheet.getFirstRowNum()).getCell(currentColumn)
-	                            .getStringCellValue();
-
 	                    // Use a DataFormatter to handle different cell types
 	                    String cellValue = dataFormatter.formatCellValue(cell);
 
 	                    columnMapdata.put(columnHeaderName, cellValue);
 	                } else {
 	                    // Handle the case when the cell is null, for example, by adding an empty string
-	                    columnMapdata.put("Column" + currentColumn, "");
+	                    columnMapdata.put(columnHeaderName, "");
 	                }
 	            }
 
@@ -65,4 +82,38 @@ public class ExcelReader {
 	    }
 
 	    return excelRows;
-	}}
+	}
+	public void setCellData(String sheetName,int rownum,int colnum,String data) throws IOException
+	{
+		File xlfile=new File(path);
+		if(!xlfile.exists())    // If file not exists then create new file
+		{
+			workbook=new XSSFWorkbook();
+			fo=new FileOutputStream(path);
+			workbook.write(fo);
+		}
+
+		fi=new FileInputStream(path);
+		workbook=new XSSFWorkbook(fi);
+
+		if(workbook.getSheetIndex(sheetName)==-1) // If sheet not exists then create new Sheet
+			workbook.createSheet(sheetName);
+
+		sheet=workbook.getSheet(sheetName);
+
+		if(sheet.getRow(rownum)==null)   // If row not exists then create new Row
+			sheet.createRow(rownum);
+		row=sheet.getRow(rownum);
+
+		cell=row.createCell(colnum);
+		cell.setCellValue(data);
+
+		fo=new FileOutputStream(path);
+		workbook.write(fo);		
+		workbook.close();
+		fi.close();
+		fo.close();
+	}	
+
+	
+}
