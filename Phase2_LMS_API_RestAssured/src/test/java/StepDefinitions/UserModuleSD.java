@@ -1,6 +1,9 @@
 package StepDefinitions;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +20,9 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
+import io.restassured.filter.log.LogDetail;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.response.Response;
 import payloads.payload;
 
@@ -44,9 +50,15 @@ public class UserModuleSD {
 	}
 
 	@When("Admin sends HTTPS Request to create users with endpoint")
-	public void admin_sends_https_request_to_create_users_with_endpoint() {
+	public void admin_sends_https_request_to_create_users_with_endpoint() throws IOException {
 		
-	
+ File logFile = new File("logs.txt");
+		 
+		 FileOutputStream fos = new FileOutputStream(logFile);
+	        PrintStream ps = new PrintStream(fos);
+	        System.setOut(ps);
+	        
+		RestAssured.filters(new RequestLoggingFilter(LogDetail.ALL), new ResponseLoggingFilter(LogDetail.ALL));
 		for(int i=0; i<data2.size();i++) {
 			
 			String requestBody = payload.UserRequestBody(data2,i);
@@ -60,6 +72,7 @@ public class UserModuleSD {
 		    responses.add(response);
 		
 		}
+		fos.close();
 }
 	
 	@Then("Admin receives appropriate Status code with response body for the users.")

@@ -2,7 +2,10 @@ package StepDefinitions;
 
 import static io.restassured.RestAssured.given;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.List;
 import java.util.Map;
 
@@ -19,6 +22,9 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
+import io.restassured.filter.log.LogDetail;
+import io.restassured.filter.log.RequestLoggingFilter;
+import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.response.Response;
 import payloads.payload;
 
@@ -43,7 +49,15 @@ public class userLoginSD {
 	}
 
 	@When("Admin calls Post Https method  with valid endpoint")
-	public void admin_calls_post_https_method_with_valid_endpoint() {
+	public void admin_calls_post_https_method_with_valid_endpoint() throws IOException {
+		
+		 File logFile = new File("logs.txt");
+		 
+		 FileOutputStream fos = new FileOutputStream(logFile);
+	        PrintStream ps = new PrintStream(fos);
+	        System.setOut(ps);
+	        
+		RestAssured.filters(new RequestLoggingFilter(LogDetail.ALL), new ResponseLoggingFilter(LogDetail.ALL));
 		
 				for(int i=0; i<data.size();i++) {
 			
@@ -58,7 +72,7 @@ public class userLoginSD {
 			LoggerLoad.info("User Logged In");
 		
 		}
-
+				fos.close();
 	}
 
 	@Then("Admin receives {int} created with auto generated token")
