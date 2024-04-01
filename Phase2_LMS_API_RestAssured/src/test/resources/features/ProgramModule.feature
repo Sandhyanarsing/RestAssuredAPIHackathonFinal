@@ -7,9 +7,3 @@ Feature: Post Request
  Given Admin creates POST Request for the LMS with request body
  When Admin sends HTTPS Request and  request Body with endpoint
  Then Admin receives appropriate Status code with response body.
- 
- @05getprogrambyprogramId
-  Scenario: Check if Admin able to retrieve a program with valid program ID
- Given Admin creates GET Request for the LMS API                                   
- When Admin sends HTTPS Request with endpoint in PM
- Then Admin receives Status with response body.

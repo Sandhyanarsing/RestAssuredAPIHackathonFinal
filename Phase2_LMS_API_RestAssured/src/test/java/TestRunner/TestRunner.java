@@ -9,9 +9,9 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		plugin= {"pretty", "json:target/cucmbereport.json","io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
-				 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
-				"rerun:target/failedrerun.txt"},
+		plugin= {"pretty", "html:target/cucumberreport.html", "html:target/ExtentReports/Ds-algo.html",
+				"rerun:target/failedrerun.txt", "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm",
+				 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
 				monochrome = true,
 				tags = "",
 				features= {"src/test/resources/features"},

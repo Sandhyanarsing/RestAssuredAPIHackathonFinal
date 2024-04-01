@@ -47,12 +47,8 @@ public class ExcelReader {
 	                Cell cell = row.getCell(currentColumn);
 
 	                if (cell != null) {
-//	                    String columnHeaderName = sheet.getRow(sheet.getFirstRowNum()).getCell(currentColumn)
-//	                            .getStringCellValue();
-	                    
-	                    String columnHeaderName = sheet.getRow(sheet.getFirstRowNum()).getCell(currentColumn) != null ?
-                                sheet.getRow(sheet.getFirstRowNum()).getCell(currentColumn).getStringCellValue() :
-                                "Column" + currentColumn;
+	                    String columnHeaderName = sheet.getRow(sheet.getFirstRowNum()).getCell(currentColumn)
+	                            .getStringCellValue();
 
 	                    // Use a DataFormatter to handle different cell types
 	                    String cellValue = dataFormatter.formatCellValue(cell);
