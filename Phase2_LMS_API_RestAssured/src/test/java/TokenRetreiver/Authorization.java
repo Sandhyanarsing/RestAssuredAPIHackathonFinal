@@ -10,16 +10,14 @@ public class Authorization {
 		String pNM;
 		String userId;
 		
-	public String setAuthorisation() {	
+	public String getAuthorisation() {	
 	
 		String retrievedToken =scenarioContext.getContext("Token", token);
 		return retrievedToken;
 	}
 	
-	public String setPMProgramID() {
-	
+	public String setPMProgramID() {	
 	String ProgramID =scenarioContext.getContext("programID", parsedPID);
-	
 	return ProgramID;
 	}
 	
