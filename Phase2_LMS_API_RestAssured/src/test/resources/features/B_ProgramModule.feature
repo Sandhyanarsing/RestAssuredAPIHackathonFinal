@@ -1,17 +1,13 @@
-
-Feature: Program Module
-
+Feature: Program Module Controller
 
  Background: 
  Given Admin sets Authorization
  
-
  @01creatingprogram
  Scenario: Check if Admin able to create a program with valid endpoint and request body with Authorization
  Given Admin creates POST Request for the LMS with request bodypm
  When Admin sends HTTPS Request and  request Body with endpointpm
  Then Admin receives appropriate Status code with response bodypm
- 
  
  @02createaprogrmwithinvalidmethod
  Scenario: Check if Admin able to create a program with invalid methodpm
@@ -43,17 +39,17 @@ Feature: Program Module
  When Admin sends HTTPS Request with invalid programidpm
  Then Admin receives Status with response body with invalid programidpm
  
- #@7getprogrambyprogramIdwithinvalidmethod
- #Scenario: Check if Admin able to retrieve a program with invalid method
- #Given Admin creates GET Request for the LMS APIpm                                   
- #When Admin sends HTTPS Request with invalid methodpm
- #Then Admin receives Status with response body with invalid methodpm
+ @7getprogrambyprogramIdwithinvalidmethod
+ Scenario: Check if Admin able to retrieve a program with invalid method
+ Given Admin creates GET Request for the LMS APIpm                                   
+ When Admin sends HTTPS Request with invalid methodpm
+ Then Admin receives Status with response body with invalid methodpm
   
- #@8getprogrambyprogramIdwithinvalidBaseUrl
- #Scenario: Check if Admin able to retrieve a program with invalid BaseUrl
- #Given Admin creates GET Request for the LMS APIpm                                   
- #When Admin sends HTTPS Request with invalid BaseUrlpm
- #Then Admin receives Status with response body with invalid BaseUrlpm
+ @8getprogrambyprogramIdwithinvalidBaseUrl
+ Scenario: Check if Admin able to retrieve a program with invalid BaseUrl
+ Given Admin creates GET Request for the LMS APIpm                                   
+ When Admin sends HTTPS Request with invalid BaseUrlspm
+ Then Admin receives Status with response body with invalid BaseUrlpm
   
  @9getallprograms
  Scenario: Check if Admin able to retrieve all programs with valid Endpoint
@@ -67,7 +63,41 @@ Feature: Program Module
  When Admin sends HTTPS Request with invalid enpointpm
  Then Admin receives appropriate Status code with response body inpm
  
+ @11getallprogramswithinvalidmethod
+ Scenario: Check if Admin able to retrieve all programs with invalid method
+ Given Admin creates GET Request for the LMS API with invalid methodpm
+ When Admin sends HTTPS Request with invalidmethodpm
+ Then Admin receives appropriate Status code with response body IMpm
  
+ @12getallprogramswithinvalidBaseUrl
+ Scenario: Check if Admin able to retrieve all programs with invalid BaseUrl
+ Given Admin creates GET Request for the LMS API with invalid baseurlpm
+ When Admin sends HTTPS Request with invalid baseurlpm
+ Then Admin receives appropriate Status code with response body inburlpm
+ 
+@13getallprogramswithprogramname
+ Scenario: Check if Admin able to retrieve all programs with valid Endpoint
+ Given Admin creates GET Request for the LMS APIpm
+ When Admin sends HTTPS Request with valid endpoint userspm 
+ Then Admin receives appropriate Status code with response body userspm
+ 
+ @14getallprogramwithprogramnamebyinvalidendpoint
+ Scenario: Check if Admin able to retrieve all programs with invalid endpoint
+ Given Admin creates GET Request for the LMS APIpm 
+ When Admin sends HTTPS Request with invalid endpoint userspm
+ Then Admin receives appropriate Status code with response body users invalid endpointpm
+ 
+ @15getallprogramwithprogramnamebyinvalidmethod
+ Scenario: Check if Admin able to retrieve all programs with invalid method
+ Given Admin creates GET Request for the LMS APIpm 
+ When Admin sends HTTPS Request with invalid method userspm
+ Then Admin receives appropriate Status code with response body users invalid methodpm
+ 
+ @16getallprogramwithprogramnamebyinvalidBaseurl
+ Scenario: Check if Admin able to retrieve all programs with invalid base url
+ Given Admin creates GET Request for the LMS APIpm 
+ When Admin sends HTTPS Request with invalid base urlpm  
+ #Then Admin receives appropriate Status code with response body users invalid base urlpm
  
  @17Updateprogramwithprgramname
  Scenario: Check if Admin able to update a program with  Valid program Name and request body
@@ -75,7 +105,25 @@ Feature: Program Module
  When Admin sends HTTPS Request with valid endpoint updatepm
  Then Admin receives Status with updated value in response bodypm
  
-
+@18UpdateprogramwithprogramnamewithInvalidendpoit
+ Scenario: Check if Admin able to update a program with  invalid endpoint 
+ Given Admin creates PUT Request for the LMS API with invalid endpointpm
+ When Admin sends HTTPS Request with invalid endpoint updatepm
+ Then Admin receives Status with message and boolean success details invalid endpoint update programnamepm
+ 
+ @19UpdateprogramwithprogramnamewithInvalidMethod
+  Scenario: Check if Admin able to update a program with  invalid method
+ Given Admin creates PUT Request for the LMS API endpoint with valid request Body with invalid methodpm
+ When Admin sends HTTPS Request with invalid method using programnamepm
+ Then Admin receives Status with message and boolean success details invalidmethod using programnamepm
+ 
+ @20UpdateprogramwithprogramnamewithInvalidBaseurl
+  Scenario: Check if Admin able to update a program with invalid baseurl
+ Given Admin creates PUT Request for the LMS API endpoint with valid request Body with invalid baseurlpm
+ When Admin sends HTTPS Request with invalid endpoint update with invalid baseurlusing programnamepm
+ Then Admin receives Status with message and boolean success details with invalid baseurlusing programnamepm
+ 
+ 
  @21UpdateprogramwithprogramId
   Scenario: Check if Admin able to update a program with valid programid
  Given Admin creates PUT Request for the LMS API endpoint with valid request Body with programidpm
@@ -104,15 +152,4 @@ Then Admin receives Status with message and boolean success details with invalid
 Scenario: Check if Admin able to update a program with invalid base url
 Given Admin creates PUT Request for the LMS API with invalid base urlpm
 When Admin sends HTTPS Request with invalid base urlpm
-Then Admin receives Status with message and boolean success details with invalid base urlpm                                        
- 
- 
- 
-                                                        
- 
- @05getprogrambyprogramId
-  Scenario: Check if Admin able to retrieve a program with valid program ID
- Given Admin creates GET Request for the LMS API                                   
- When Admin sends HTTPS Request with endpoint in PM
- Then Admin receives Status with response body.
-
+Then Admin receives Status with message and boolean success details with invalid base urlpm

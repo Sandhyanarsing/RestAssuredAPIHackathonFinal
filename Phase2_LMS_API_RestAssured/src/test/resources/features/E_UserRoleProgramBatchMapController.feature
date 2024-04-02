@@ -1,5 +1,4 @@
-Feature: Get/Delete Request- AdminRoleProgramBatchmap
-
+Feature: User RoleMap Controller
   Background: 
     Given Admin sets Authorization
 
@@ -17,8 +16,6 @@ Feature: Get/Delete Request- AdminRoleProgramBatchmap
   Scenario: Check if admin is able to retreive assigned program batches for invalid AdminId
     When Admin sends HTTPS Request with InvalidAdminId and Auth
     Then Verify 404 response displayed
-
-  
 
   @01deletemapcontrol200response
   Scenario: Check if admin is able to delete the program batch for a Admin

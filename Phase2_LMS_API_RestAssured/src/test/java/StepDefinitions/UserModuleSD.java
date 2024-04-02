@@ -25,7 +25,6 @@ import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.response.Response;
 import lmsApiConstants.LMSConstants;
-import lmsApiConstants.LMSConstants;
 import payloads.payload;
 
 public class UserModuleSD {
@@ -47,7 +46,7 @@ public class UserModuleSD {
 	
 	@Given("Admin creates POST request to create users with all valid and invalid requests forUserModule")
 	public void admin_creates_post_request_to_create_users_with_all_valid_and_invalid_requests_forUserModule() throws InvalidFormatException, IOException {
-		data2 = ExcelReader.getData(URLs.ExcelPath, "Sheet2");
+		data2 = ExcelReader.getData(URLs.ExcelPath, "UserModule");
 		
 	}
 
@@ -333,7 +332,7 @@ public void admin_creates_put_request_with_valid_data_in_request_body_with_inval
 	response = RestAssured
 	 		   .given()
 	 		   .spec(RS.createReq(URLs.UpdateUserRoleProgramBatchStatus))
-	 		   .pathParam("userID","ABC")
+	 		   .pathParam("userId","ABC")
 	 		   .body(requestBody)
 	 		   .when().put();
 	response.then().log().all();

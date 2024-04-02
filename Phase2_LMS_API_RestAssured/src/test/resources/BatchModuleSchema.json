@@ -1,0 +1,43 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Welcome5",
+    "definitions": {
+        "Welcome5": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "batchDescription": {
+                    "type": "string"
+                },
+                "batchId": {
+                    "type": "integer"
+                },
+                "batchName": {
+                    "type": "string"
+                },
+                "batchNoOfClasses": {
+                    "type": "integer"
+                },
+                "batchStatus": {
+                    "type": "string"
+                },
+                "programId": {
+                    "type": "integer"
+                },
+                "programName": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "batchDescription",
+                "batchId",
+                "batchName",
+                "batchNoOfClasses",
+                "batchStatus",
+                "programId",
+                "programName"
+            ],
+            "title": "Welcome5"
+        }
+    }
+}

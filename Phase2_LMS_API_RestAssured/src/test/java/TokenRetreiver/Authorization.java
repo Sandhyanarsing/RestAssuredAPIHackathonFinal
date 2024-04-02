@@ -10,25 +10,25 @@ public class Authorization {
 		String pNM;
 		String userId;
 		
-	public String getAuthorisation() {	
+	public String setAuthorisation() {	
 	
 		String retrievedToken =scenarioContext.getContext("Token", token);
 		return retrievedToken;
 	}
 	
-	public String setPMProgramID() {	
-	String ProgramID =scenarioContext.getContext("programID", parsedPID);
-	return ProgramID;
-	}
-	
-	public String setPMProgramName() {
-	String ProgramName =scenarioContext.getContext("programName", pNM);
-	return ProgramName;
-}
-	
-	public String setUserID() {
-		String userID =scenarioContext.getContext("userId", userId);
-		return userID;
-}
+//	public String setPMProgramID() {	
+//	String ProgramID =scenarioContext.getContext("programID", parsedPID);
+//	return ProgramID;
+//	}
+//	
+//	public String setPMProgramName() {
+//	String ProgramName =scenarioContext.getContext("programName", pNM);
+//	return ProgramName;
+//}
+//	
+//	public String setUserID() {
+//		String userID =scenarioContext.getContext("userId", userId);
+//		return userID;
+//}
 }
 

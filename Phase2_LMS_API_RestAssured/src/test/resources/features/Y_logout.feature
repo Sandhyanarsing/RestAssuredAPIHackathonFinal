@@ -1,4 +1,4 @@
-Feature: Get Request - Logout
+Feature: Logout 
 
   Background: 
     Given Admin sets Authorization
@@ -13,7 +13,7 @@ Feature: Get Request - Logout
     When Admin calls Get Https method withinvalid endpoint
     Then Verify 404 response displayed Logout
 
-  #@01getlogoutFailure401
-  #Scenario: Check if Admin not able to logout
-    #When Admin calls Get Https method with valid endpoint No Auth
-    #Then Verify 401 response displayed Logout
+  @01getlogoutFailure401
+  Scenario: Check if Admin not able to logout
+    When Admin calls Get Https method with valid endpoint No Auth
+    Then Verify 401 response displayed Logout

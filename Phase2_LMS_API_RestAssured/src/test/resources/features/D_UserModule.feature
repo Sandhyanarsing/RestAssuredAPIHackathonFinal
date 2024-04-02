@@ -1,6 +1,6 @@
 
 @tag
-Feature: Post Request.
+Feature: User Module Controller
   
   
   Background:
@@ -49,12 +49,12 @@ Feature: Post Request.
     When Admin sends HTTPS Request with invalid endpoint forUserModule
    Then Admin receives status 404 with Not Found error message forUserModule
    
-   #@08GetByAdminIDwithInvAdminId
-  #Scenario: Check if Admin able to retrieve a Admin with invalid Admin ID
-    #Given Admin creates GET Request with invalid AdminId forUserModule
-    #When Admin sends HTTPS Request with Invalid admin id forUserModule
-   #Then Admin receives status 404 with Not Found error message forUserModule
-   #
+   @08GetByAdminIDwithInvAdminId
+  Scenario: Check if Admin able to retrieve a Admin with invalid Admin ID
+    Given Admin creates GET Request with invalid AdminId forUserModule
+    When Admin sends HTTPS Request with Invalid admin id forUserModule
+   Then Admin receives status 404 with Not Found error message forUserModule
+   
    
    @09UpdateAdminByRoleID
   Scenario: Check if admin is able to update role id of a Admin by valid Admin id

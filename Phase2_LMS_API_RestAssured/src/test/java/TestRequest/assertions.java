@@ -12,11 +12,12 @@ import io.restassured.response.Response;
 public class assertions {
 
 	Response response;
-
-//	public assertions(Response response) {
-//		this.response = response;
-//	}
-
+	
+	
+	public assertions(Response response) {
+        this.response = response;
+    }
+	
 	public void assertUserLoginModule() {
 		// response.then().log().all();
 		response.then().header("Content-Type", equalTo("application/json"))
@@ -25,15 +26,6 @@ public class assertions {
 
 	}
 
-}
-
-	
-	Response response;
-	
-	public assertions(Response response) {
-        this.response = response;
-    }
-	
 	public void assertUserModule() {
 		//response.then().log().all();
 		response.then()
@@ -42,6 +34,16 @@ public class assertions {
         .body("userFirstName", instanceOf(String.class))
         .body("userId", instanceOf(String.class))
         .assertThat().body(JsonSchemaValidator.matchesJsonSchemaInClasspath("UserModuleSchema.json"));
+      LoggerLoad.info("the validation is success");
+	}
+	public void assertBatchModule() {
+		//response.then().log().all();
+		response.then()
+		.body("batchName", containsString("TechGeeks"))
+        .header("Content-Type", equalTo("application/json"))
+        .body("batchName", instanceOf(String.class))
+       // .body("batchId", instanceOf(Integer.class))
+        .assertThat().body(JsonSchemaValidator.matchesJsonSchemaInClasspath("BatchModuleSchema.json"));
       LoggerLoad.info("the validation is success");
 	}
 
