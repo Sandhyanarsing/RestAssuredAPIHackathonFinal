@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.json.JSONObject;
 
 import EndPoints.URLs;
 import TestRequest.assertions;
@@ -33,15 +34,18 @@ public class ProgramSD {
 	RequestSpec RS = new RequestSpec();
 	List<Map<String, String>>data;
 	List<Response> responses = new ArrayList<>();
-	String retrievedtoken;	
-	String programId;
-	String programName;
+String retrievedtoken;	
+String programId;
+List<String> programIDs = new ArrayList<>();
+String retrievedtoken;
+String programName;
 	
 	
 	@Given("Admin sets Authorization")
 	public void admin_sets_authorization() {
 		auth.setAuthorisation();
 	}
+
 
 	@Given("Admin creates POST Request for the LMS with request bodypm")
 	public void admin_creates_post_request_for_the_lms_with_request_bodypm() throws InvalidFormatException, IOException {
@@ -53,12 +57,23 @@ public class ProgramSD {
 				 
 	}
 
+
 	@When("Admin sends HTTPS Request and  request Body with endpointpm")
 	public void admin_sends_https_request_and_request_body_with_endpointpm() throws InvalidFormatException, IOException {
 		
 		for(int i=0; i<data.size();i++) {
 
+
 			String requestBody = payload.ProgramData(data,i);
+
+			 requestBody = "{\n" +
+                   "  \"programDescription\": \"" + data.get(i).get("programDescription") + "\",\n" +
+                   "  \"programName\": \"" + data.get(i).get("programName") + "\",\n" +
+                   "  \"programStatus\": \"" + data.get(i).get("programStatus") + "\"\n" +
+                   "}";
+			
+		
+
 		response = RestAssured
 	    		   .given()
 	    		   .spec(RS.createReq(URLs.createProgram))
@@ -72,9 +87,6 @@ public class ProgramSD {
         		programName = response.jsonPath().getString("programName");
         	  	 Authorization.scenarioContext.setContext(LMSConstants.PROGRAMID_KEY, programId);
         	   	Authorization.scenarioContext.setContext(LMSConstants.PROGRAMNAME_KEY, programName);  	  
-        	   	///Authorization.scenarioContext.setContext(LMSConstants.BATCHID_KEY, batchId);
-         	   	//assertions asserts = new assertions(response);
-        	//asserts.assertProgramModule();
             	
         	}
         }else if(response.statusCode()==400) {
@@ -120,9 +132,23 @@ public class ProgramSD {
 		response.then().statusCode(405);
 		response.then().log().all();
 		
+
 	}
 	@Given("Admin creates POST Request for the LMS with request body and invalid endpointpm")
 	public void admin_creates_post_request_for_the_lms_with_request_body_and_invalid_endpointpm() {
+
+		if(response.statusCode()==201) {
+        	System.out.println("sucess");
+        	responses.add(response);
+        	//JSONObject jsonObject = new JSONObject(response);
+        	pID = response.jsonPath().getInt("programId");
+        	pNM = response.jsonPath().getString("programName");
+        	
+        }else if(response.statusCode()==400) {
+        	System.out.println("failure");
+        }
+		 }
+
 		
 	}
 	@When("Admin sends HTTPS Request and  request Body with invalid endpointpm")
@@ -144,7 +170,7 @@ public class ProgramSD {
 		response.then().log().all();
 		}
 	
-	
+
 
 	@When("Admin sends HTTPS Request with endpointpm")
 	public void admin_sends_https_request_with_endpointpm() {
@@ -422,9 +448,42 @@ public void admin_receives_appropriate_status_code_with_response_body_inpm() {
         }
        }
 	@Given("Admin creates PUT Request for the LMS API endpoint with valid request Body with invalid methodpm")
-	public void admin_creates_put_request_for_the_lms_api_endpoint_with_valid_request_body_with_invalid_methodpm() {
+	public void admin_creates_put_request_for_the_lms_api_endpoint_with_valid_request_body_with_invalid_methodpm() {}
 	    
 	
+
+
+	@Then("Admin receives appropriate Status code with response body.")
+	public void admin_receives_appropriate_status_code_with_response_body()  {
+		
+		 for (Response response : responses) {
+				response.then().log().all();
+				}
+            
+	}
+	
+	@Given("Admin creates GET Request for the LMS API")
+	public void admin_creates_get_request_for_the_lms_api() {
+		 programID =auth.setPMProgramID();
+		 programName = auth.setPMProgramName();
+		System.out.println(programID);
+		System.out.println(programName);
+	}
+
+	@When("Admin sends HTTPS Request with endpoint in PM")
+	public void admin_sends_https_request_with_endpoint_in_PM() {
+//		String programId = data.get("programId")!=null && data.get("programId").equlas("") ? Authorization.scenarioContext.getContext(LMSConstants.PROGRAMID_KEY);
+		System.out.println(programID);
+		response = RestAssured
+	    		   .given()
+	    		   //.header("Authorization", "Bearer "+ auth.setAuthorisation())
+	    		   .spec(RS.createReq(URLs.GetProgramByProgramId))
+	    		   .pathParam("programId",programID)
+	    		   //.body(requestBody)-
+	    		   .when().get();
+		
+		response.then().log().all();
+
 	}
     @When("Admin sends HTTPS Request with invalid method using programnamepm")
 	public void admin_sends_https_request_with_invalid_method_using_programnamepm() {
@@ -442,6 +501,7 @@ public void admin_receives_appropriate_status_code_with_response_body_inpm() {
     	response.then().statusCode(404);
 	    System.out.println(response.getBody().asString());
     }
+
 
     @Then("Admin receives Status with message and boolean success details invalidmethod using programnamepm")
 	public void admin_receives_status_with_message_and_boolean_success_details_invalidmethod_using_programnamepm() {
@@ -663,5 +723,13 @@ if(response.statusCode()==200) {
 
 	    
 	}
+
+	@Then("Admin receives Status with response body.")
+	public void admin_receives_status_with_response_body() {
+	    response.then().statusCode(200);
+	    System.out.println(response.getBody().asString());
+
+}
+
 }
 

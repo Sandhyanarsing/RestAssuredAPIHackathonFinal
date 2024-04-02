@@ -1,5 +1,10 @@
 
-Feature: Program Module
+
+Feature: Request with  no auth
+
+ Background: 
+ Given admin sets Authoization to No  Auth.
+
 
 @01createprogramwithnoAuth 
 Scenario: Check if Admin able to create a program with valid endpoint and request body without Authorization 
@@ -50,3 +55,20 @@ Scenario: Check if Admin able to create a program with valid endpoint and reques
  When Admin sends HTTPS Request and  request Body with endpoint without Auth by delete programNamepm
  Then Admin receives appropriate Status code with response body without Auth by delete programNamepm
  
+ @tag1
+ Scenario: Check if admin able to create a new Admin with request body without authorization
+ Given Admin creates POST request to create users with all valid and invalid requests forUserModule
+ When Admin sends HTTPS Request to create users with endpoint with no auth forUserModule
+ Then Admin receives status 401 with Unauthorized message forUserModule
+ 
+ @tag2
+ Scenario: Check if admin is able to retreive all the available roles without Authorization
+ Given Admin creates GET Request forUserModule
+ When Admin sends HTTPS Request with GET All Roles endpoint with no auth forUserModule
+ Then Admin receives status 401 with Unauthorized message forUserModule
+
+ Given Admin creates GET Request
+ When Admin sends HTTPS Request with GET All Roles endpoint with no auth
+ Then Admin receives status 401 with Unauthorized message
+
+  
