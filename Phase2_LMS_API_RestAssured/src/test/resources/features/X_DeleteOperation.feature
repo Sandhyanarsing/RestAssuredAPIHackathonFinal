@@ -1,3 +1,4 @@
+
 @tag
 Feature: Delete Opeartion
   I want to use this template for my feature file
@@ -77,3 +78,4 @@ Scenario:  Check if admin able to delete a Batch with invalid endpoint
  #Given Admin creates PUT Request with Valid batch Id after deletion of batchID
  #When  Admin sends HTTPS Request  with endpoint after deletion of batchID
  #Then  Admin receives 200 Ok status with message after deletion of batchID
+

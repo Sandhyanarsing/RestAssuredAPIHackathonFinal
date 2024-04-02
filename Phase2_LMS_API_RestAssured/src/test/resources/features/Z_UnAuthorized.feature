@@ -1,5 +1,6 @@
 
 
+
 Feature: Request with  no auth
   I want to use this template for my feature file
 
@@ -67,5 +68,6 @@ Feature: Request with  no auth
  #When  Admin sends delete HTTPS Request with endpoint_noAuth
  #Then  Admin receives 401 Unauthorized Status_noAuth 
  #
+
 
 

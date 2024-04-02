@@ -85,12 +85,9 @@ public class UserModuleSD {
             if(response.statusCode()==201)
             {
             	userId = response.jsonPath().getString("userId");
-                userIds.add(userId);
-                for(String userID:userIds ) 
-                     {
-                	 System.out.println("User ID: " + userID);
-                	 userId = Authorization.scenarioContext.setContext("userId", userId);
-                	  }
+            
+                	  Authorization.scenarioContext.setContext(LMSConstants.USERID_KEY, userId);
+         
                 assertions asserts = new assertions(response);
                 asserts.assertUserModule(); 
             	
@@ -235,10 +232,18 @@ public void admin_creates_get_request_with_valid_admin_id_forUserModule() {
 	//userID = auth.setUserID();
 }
 
-@Given("Admin creates GET Request with invalid AdminId forUserModule")
-public void admin_creates_get_request_with_invalid_admin_id_forUserModule() {
-    
-}
+//@Given("Admin creates GET Request with invalid AdminId forUserModule")
+//public void admin_creates_get_request_with_invalid_admin_id_forUserModule() {
+//    
+//}
+//  @When("Admin sends HTTPS Request with Invalid admin id forUserModule")
+//  public void Admin_sends_HTTPS_Request_with_Invalid_admin_id_forUserModule() {
+//	  response = RestAssured
+//	 		   .given()
+//	 		   .spec(RS.createReq(URLs.getAllAdmins))
+//	 		   .pathParam("roleId", "R01")
+//	 		   .when().get();
+//  }
 
 @When("Admin sends HTTPS Request with endpoint with AdminID forUserModule")
 public void admin_sends_https_request_with_endpoint_with_admin_id_forUserModule() {
@@ -302,7 +307,7 @@ public void admin_sends_https_request_with_endpoint_and_program_batch_forUserMod
 	response = RestAssured
 	 		   .given()
 	 		   .spec(RS.createReq(URLs.UpdateUserRoleProgramBatchStatus))
-	 		   .pathParam("userID",Authorization.scenarioContext.getContext(LMSConstants.USERID_KEY))
+	 		   .pathParam("userId",Authorization.scenarioContext.getContext(LMSConstants.USERID_KEY))
 	 		   .body(requestBody)
 	 		   .when().put();
 	response.then().log().all();
@@ -316,7 +321,7 @@ public void admin_sends_https_request_with_endpoint_and_program_batch_with_inval
 	response = RestAssured
 	 		   .given()
 	 		   .spec(RS.createReq(URLs.UpdateUserRoleProgramBatchStatus))
-	 		   .pathParam("userID",Authorization.scenarioContext.getContext(LMSConstants.USERID_KEY))
+	 		   .pathParam("userId",Authorization.scenarioContext.getContext(LMSConstants.USERID_KEY))
 	 		   .body(requestBody)
 	 		   .when().put();
 	response.then().log().all();

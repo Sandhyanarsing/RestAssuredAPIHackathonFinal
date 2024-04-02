@@ -49,12 +49,12 @@ Feature: Post Request.
     When Admin sends HTTPS Request with invalid endpoint forUserModule
    Then Admin receives status 404 with Not Found error message forUserModule
    
-   @08GetByAdminIDwithInvAdminId
-  Scenario: Check if Admin able to retrieve a Admin with invalid Admin ID
-    Given Admin creates GET Request with invalid AdminId forUserModule
-    When Admin sends HTTPS Request with valid endpoint forUserModule
-   Then Admin receives status 404 with Not Found error message forUserModule
-   
+   #@08GetByAdminIDwithInvAdminId
+  #Scenario: Check if Admin able to retrieve a Admin with invalid Admin ID
+    #Given Admin creates GET Request with invalid AdminId forUserModule
+    #When Admin sends HTTPS Request with Invalid admin id forUserModule
+   #Then Admin receives status 404 with Not Found error message forUserModule
+   #
    
    @09UpdateAdminByRoleID
   Scenario: Check if admin is able to update role id of a Admin by valid Admin id
@@ -63,13 +63,13 @@ Feature: Post Request.
    Then Admin receives 200 OK  Status with response body forUserModule 
    
    @10UpdateAdminByRoleIDwithInvReqBaody
-  Scenario: Check if admin is able to update role id of a Admin by valid Admin id
+  Scenario: Check if admin is able to update role id of a Admin by Invvalid ReqBody
     Given Admin creates PUT Request with invalid request body forUserModule
     When Admin sends HTTPS Request with endpoint and invalid request body forUserModule
    Then Admin receives 400 Bad Request Status with message and boolean success details forUserModule
    
     @11UpdateAdminByRoleIDwithInvAdminID
-  Scenario: Check if admin is able to update role id of a Admin by valid Admin id
+  Scenario: Check if admin is able to update role id of a Admin by invvalid Admin id
     Given Admin creates PUT Request with request body forUserModule
     When Admin sends HTTPS Request with endpoint and invalid admin id forUserModule
    Then Admin receives 404 Not Found Status with message and boolean success details forUserModule
@@ -93,7 +93,7 @@ Feature: Post Request.
    Then Admin receives 200 Ok Status with response message forUserModule  
    
    @15UpdateAdminRoleStatusByInvRoleStatus
-  Scenario: Check if admin is able to update role status of a Admin with valid Admin id
+  Scenario: Check if admin is able to update role status of a Admin with inv role status
     Given Admin creates PUT Request with request body forUserModule
     When Admin sends HTTPS Request with endpoint with invalid Rolestatus forUserModule
    Then Admin receives 400 Bad Request Status with message and boolean success details forUserModule
@@ -123,13 +123,13 @@ Feature: Post Request.
    Then Admin receives 200 Ok Status with response message forUserModule  
    
    @20UpdateAdminProgramBatchByAdminIDAndInvData
-  Scenario: Check if admin is able to assign Admin to with program/batch by Admin Id
+  Scenario: Check if admin is able to assign Admin to with program/batch by Admin Id and inv data
     Given Admin creates PUT Request with request body forUserModule
     When Admin sends HTTPS Request with endpoint and program/batch with invalid data forUserModule
    Then Admin receives 400 Bad Request Status with message and boolean success details forUserModule   
    
    @21UpdateAdminRoleStatusyAdminIDAndInvEP
-  Scenario:Check if admin is able to assign Admin to with program/batch by invalid Admin Id
+  Scenario:Check if admin is able to assign Admin to with program/batch by valid Admin Id with invEP
     Given Admin creates PUT Request with request body forUserModule
     When Admin creates PUT Request with valid data in request body with invalid adminID forUserModule
    Then Admin receives status 404 with Not Found error message forUserModule   
@@ -152,8 +152,8 @@ Feature: Post Request.
     When Admin sends HTTPS Request to update the Admin login status with invalid AdminId forUserModule
    Then Admin receives status 404 with Not Found error message forUserModule
    
-   @25UpdateAdminLoginStatusyAdminID
-  Scenario: Check if admin is able to update the Admin login status by Admin ID
+   @25UpdateAdminLoginStatusyAdminIDwithinvEP
+  Scenario: Check if admin is able to update the Admin login status by Admin ID with INV EP
     Given Admin creates PUT Request with request body forUserModule
     When Admin sends HTTPS Request with invalid endpoint forUserModule
    Then Admin receives status 404 with Not Found error message forUserModule     

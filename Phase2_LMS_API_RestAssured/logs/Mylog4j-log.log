@@ -1,0 +1,236 @@
+[INFO ] 2024-04-01 01:14:59.922 [main] LoggerLoad - User Logged In
+[INFO ] 2024-04-01 11:57:11.800 [main] LoggerLoad - User Logged In
+[INFO ] 2024-04-01 11:57:24.692 [main] LoggerLoad - the validation is success
+[INFO ] 2024-04-01 11:57:24.740 [main] LoggerLoad - the validation is success
+[INFO ] 2024-04-01 11:57:24.791 [main] LoggerLoad - the validation is success
+[INFO ] 2024-04-01 11:57:24.803 [main] LoggerLoad - Enter phone no in this format (CountryCode)(PhoneNo) +91 1234567890
+[INFO ] 2024-04-01 11:57:24.814 [main] LoggerLoad - Invalid Status: must be Active or Inactive
+[INFO ] 2024-04-01 11:57:24.824 [main] LoggerLoad - Failed to create user, as 'roleId' is invalid !! 
+[INFO ] 2024-04-01 11:57:24.833 [main] LoggerLoad - Failed to create user, as 'TimeZone' is invalid !! 
+[INFO ] 2024-04-01 11:57:24.845 [main] LoggerLoad - Failed to create user, as 'Visa Status' is invalid !! 
+[INFO ] 2024-04-01 11:57:24.856 [main] LoggerLoad - userLinkedinUrlmust contain www.linkedin.com
+[INFO ] 2024-04-01 11:57:24.868 [main] LoggerLoad - null
+[INFO ] 2024-04-01 11:57:24.922 [main] LoggerLoad - the validation is success
+[INFO ] 2024-04-01 11:57:24.974 [main] LoggerLoad - the validation is success
+[INFO ] 2024-04-01 11:57:25.024 [main] LoggerLoad - the validation is success
+[INFO ] 2024-04-01 11:57:26.178 [main] LoggerLoad - HTTP/1.1 200 
+[INFO ] 2024-04-01 11:57:26.557 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 11:57:26.825 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 11:57:27.093 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 11:57:27.938 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 11:57:28.179 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 11:57:28.483 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 11:57:28.711 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 11:57:29.917 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 11:57:30.498 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 12:21:31.920 [main] LoggerLoad - User Logged In
+[INFO ] 2024-04-01 12:21:39.846 [main] LoggerLoad - Failed to create new User as phone number 1467123483 already exists !!
+[INFO ] 2024-04-01 12:21:39.855 [main] LoggerLoad - Failed to create new User as phone number 1467123484 already exists !!
+[INFO ] 2024-04-01 12:21:39.865 [main] LoggerLoad - Failed to create new User as phone number 1467123485 already exists !!
+[INFO ] 2024-04-01 12:21:39.875 [main] LoggerLoad - Enter phone no in this format (CountryCode)(PhoneNo) +91 1234567890
+[INFO ] 2024-04-01 12:21:39.885 [main] LoggerLoad - Invalid Status: must be Active or Inactive
+[INFO ] 2024-04-01 12:21:39.896 [main] LoggerLoad - Failed to create user, as 'roleId' is invalid !! 
+[INFO ] 2024-04-01 12:21:39.909 [main] LoggerLoad - Failed to create user, as 'TimeZone' is invalid !! 
+[INFO ] 2024-04-01 12:21:39.919 [main] LoggerLoad - Failed to create user, as 'Visa Status' is invalid !! 
+[INFO ] 2024-04-01 12:21:39.929 [main] LoggerLoad - userLinkedinUrlmust contain www.linkedin.com
+[INFO ] 2024-04-01 12:21:39.942 [main] LoggerLoad - null
+[INFO ] 2024-04-01 12:21:39.953 [main] LoggerLoad - Failed to create new User as phone number 4467123411 already exists !!
+[INFO ] 2024-04-01 12:21:39.962 [main] LoggerLoad - Failed to create new User as phone number 4567123412 already exists !!
+[INFO ] 2024-04-01 12:21:39.972 [main] LoggerLoad - Failed to create new User as phone number 4565123413 already exists !!
+[INFO ] 2024-04-01 12:21:39.981 [main] LoggerLoad - Failed to create new User as phone number 4467123414 already exists !!
+[INFO ] 2024-04-01 12:21:39.993 [main] LoggerLoad - Failed to create new User as phone number 4467123415 already exists !!
+[INFO ] 2024-04-01 12:21:40.003 [main] LoggerLoad - userLinkedinUrlmust contain www.linkedin.com
+[INFO ] 2024-04-01 12:21:40.017 [main] LoggerLoad - Invalid Status: must be Active or Inactive
+[INFO ] 2024-04-01 12:21:40.028 [main] LoggerLoad - Failed to create new User as phone number 4467123418 already exists !!
+[INFO ] 2024-04-01 12:21:40.037 [main] LoggerLoad - Failed to create new User as phone number 4467123419 already exists !!
+[INFO ] 2024-04-01 12:21:40.046 [main] LoggerLoad - Failed to create user, as 'roleId' is invalid !! 
+[INFO ] 2024-04-01 12:21:40.056 [main] LoggerLoad - Failed to create user, as 'TimeZone' is invalid !! 
+[INFO ] 2024-04-01 12:21:40.065 [main] LoggerLoad - Failed to create user, as 'Visa Status' is invalid !! 
+[INFO ] 2024-04-01 12:21:40.076 [main] LoggerLoad - Failed to create new User as phone number 1467123483 already exists !!
+[INFO ] 2024-04-01 12:21:40.086 [main] LoggerLoad - Failed to create new UserLogin as email already exists!
+[INFO ] 2024-04-01 12:21:40.097 [main] LoggerLoad - Failed to create new User as phone number 1467123483 already exists !!
+[INFO ] 2024-04-01 12:21:41.349 [main] LoggerLoad - HTTP/1.1 200 
+[INFO ] 2024-04-01 12:21:41.695 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 12:21:42.010 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 12:21:42.273 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 12:21:43.069 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 12:21:43.342 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 12:21:43.660 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 12:21:43.898 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 12:21:44.174 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 12:21:44.409 [main] LoggerLoad - HTTP/1.1 200 
+[INFO ] 2024-04-01 12:21:44.637 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 12:21:49.210 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 12:21:50.242 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 12:21:50.562 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:10:04.494 [main] LoggerLoad - User Logged In
+[INFO ] 2024-04-01 19:10:12.056 [main] LoggerLoad - Failed to create new User as phone number 1467123483 already exists !!
+[INFO ] 2024-04-01 19:10:12.070 [main] LoggerLoad - Failed to create new User as phone number 1467123484 already exists !!
+[INFO ] 2024-04-01 19:10:12.083 [main] LoggerLoad - Failed to create new User as phone number 1467123485 already exists !!
+[INFO ] 2024-04-01 19:10:12.094 [main] LoggerLoad - Enter phone no in this format (CountryCode)(PhoneNo) +91 1234567890
+[INFO ] 2024-04-01 19:10:12.107 [main] LoggerLoad - Invalid Status: must be Active or Inactive
+[INFO ] 2024-04-01 19:10:12.118 [main] LoggerLoad - Failed to create user, as 'roleId' is invalid !! 
+[INFO ] 2024-04-01 19:10:12.127 [main] LoggerLoad - Failed to create user, as 'TimeZone' is invalid !! 
+[INFO ] 2024-04-01 19:10:12.138 [main] LoggerLoad - Failed to create user, as 'Visa Status' is invalid !! 
+[INFO ] 2024-04-01 19:10:12.147 [main] LoggerLoad - userLinkedinUrlmust contain www.linkedin.com
+[INFO ] 2024-04-01 19:10:12.157 [main] LoggerLoad - null
+[INFO ] 2024-04-01 19:10:12.167 [main] LoggerLoad - Failed to create new User as phone number 4467123411 already exists !!
+[INFO ] 2024-04-01 19:10:12.177 [main] LoggerLoad - Failed to create new User as phone number 4567123412 already exists !!
+[INFO ] 2024-04-01 19:10:12.188 [main] LoggerLoad - Failed to create new User as phone number 4565123413 already exists !!
+[INFO ] 2024-04-01 19:10:12.196 [main] LoggerLoad - Failed to create new User as phone number 4467123414 already exists !!
+[INFO ] 2024-04-01 19:10:12.207 [main] LoggerLoad - Failed to create new User as phone number 4467123415 already exists !!
+[INFO ] 2024-04-01 19:10:12.216 [main] LoggerLoad - userLinkedinUrlmust contain www.linkedin.com
+[INFO ] 2024-04-01 19:10:12.225 [main] LoggerLoad - Invalid Status: must be Active or Inactive
+[INFO ] 2024-04-01 19:10:12.232 [main] LoggerLoad - Failed to create new User as phone number 4467123418 already exists !!
+[INFO ] 2024-04-01 19:10:12.241 [main] LoggerLoad - Failed to create new User as phone number 4467123419 already exists !!
+[INFO ] 2024-04-01 19:10:12.251 [main] LoggerLoad - Failed to create user, as 'roleId' is invalid !! 
+[INFO ] 2024-04-01 19:10:12.260 [main] LoggerLoad - Failed to create user, as 'TimeZone' is invalid !! 
+[INFO ] 2024-04-01 19:10:12.269 [main] LoggerLoad - Failed to create user, as 'Visa Status' is invalid !! 
+[INFO ] 2024-04-01 19:10:12.280 [main] LoggerLoad - Failed to create new User as phone number 1467123483 already exists !!
+[INFO ] 2024-04-01 19:10:12.289 [main] LoggerLoad - Failed to create new UserLogin as email already exists!
+[INFO ] 2024-04-01 19:10:12.300 [main] LoggerLoad - Failed to create new User as phone number 1467123483 already exists !!
+[INFO ] 2024-04-01 19:10:13.897 [main] LoggerLoad - HTTP/1.1 200 
+[INFO ] 2024-04-01 19:10:14.280 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:10:15.085 [main] LoggerLoad - HTTP/1.1 200 
+[INFO ] 2024-04-01 19:10:15.333 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:10:16.155 [main] LoggerLoad - HTTP/1.1 200 
+[INFO ] 2024-04-01 19:10:16.418 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:10:18.090 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:10:18.352 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:10:18.673 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:10:18.904 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:10:19.181 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:10:19.405 [main] LoggerLoad - HTTP/1.1 200 
+[INFO ] 2024-04-01 19:10:19.652 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:10:25.015 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:10:26.071 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:10:26.297 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:19:29.522 [main] LoggerLoad - User Logged In
+[INFO ] 2024-04-01 19:19:36.626 [main] LoggerLoad - Failed to create new User as phone number 1467123483 already exists !!
+[INFO ] 2024-04-01 19:19:36.643 [main] LoggerLoad - Failed to create new User as phone number 1467123484 already exists !!
+[INFO ] 2024-04-01 19:19:36.654 [main] LoggerLoad - Failed to create new User as phone number 1467123485 already exists !!
+[INFO ] 2024-04-01 19:19:36.668 [main] LoggerLoad - Enter phone no in this format (CountryCode)(PhoneNo) +91 1234567890
+[INFO ] 2024-04-01 19:19:36.677 [main] LoggerLoad - Invalid Status: must be Active or Inactive
+[INFO ] 2024-04-01 19:19:36.686 [main] LoggerLoad - Failed to create user, as 'roleId' is invalid !! 
+[INFO ] 2024-04-01 19:19:36.699 [main] LoggerLoad - Failed to create user, as 'TimeZone' is invalid !! 
+[INFO ] 2024-04-01 19:19:36.712 [main] LoggerLoad - Failed to create user, as 'Visa Status' is invalid !! 
+[INFO ] 2024-04-01 19:19:36.723 [main] LoggerLoad - userLinkedinUrlmust contain www.linkedin.com
+[INFO ] 2024-04-01 19:19:36.736 [main] LoggerLoad - null
+[INFO ] 2024-04-01 19:19:36.747 [main] LoggerLoad - Failed to create new User as phone number 4467123411 already exists !!
+[INFO ] 2024-04-01 19:19:36.760 [main] LoggerLoad - Failed to create new User as phone number 4567123412 already exists !!
+[INFO ] 2024-04-01 19:19:36.772 [main] LoggerLoad - Failed to create new User as phone number 4565123413 already exists !!
+[INFO ] 2024-04-01 19:19:36.782 [main] LoggerLoad - Failed to create new User as phone number 4467123414 already exists !!
+[INFO ] 2024-04-01 19:19:36.794 [main] LoggerLoad - Failed to create new User as phone number 4467123415 already exists !!
+[INFO ] 2024-04-01 19:19:36.802 [main] LoggerLoad - userLinkedinUrlmust contain www.linkedin.com
+[INFO ] 2024-04-01 19:19:36.816 [main] LoggerLoad - Invalid Status: must be Active or Inactive
+[INFO ] 2024-04-01 19:19:36.824 [main] LoggerLoad - Failed to create new User as phone number 4467123418 already exists !!
+[INFO ] 2024-04-01 19:19:36.835 [main] LoggerLoad - Failed to create new User as phone number 4467123419 already exists !!
+[INFO ] 2024-04-01 19:19:36.844 [main] LoggerLoad - Failed to create user, as 'roleId' is invalid !! 
+[INFO ] 2024-04-01 19:19:36.853 [main] LoggerLoad - Failed to create user, as 'TimeZone' is invalid !! 
+[INFO ] 2024-04-01 19:19:36.863 [main] LoggerLoad - Failed to create user, as 'Visa Status' is invalid !! 
+[INFO ] 2024-04-01 19:19:36.875 [main] LoggerLoad - Failed to create new User as phone number 1467123483 already exists !!
+[INFO ] 2024-04-01 19:19:36.883 [main] LoggerLoad - Failed to create new UserLogin as email already exists!
+[INFO ] 2024-04-01 19:19:36.895 [main] LoggerLoad - Failed to create new User as phone number 1467123483 already exists !!
+[INFO ] 2024-04-01 19:19:38.465 [main] LoggerLoad - HTTP/1.1 200 
+[INFO ] 2024-04-01 19:19:38.835 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:19:39.804 [main] LoggerLoad - HTTP/1.1 200 
+[INFO ] 2024-04-01 19:19:40.047 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:19:40.885 [main] LoggerLoad - HTTP/1.1 200 
+[INFO ] 2024-04-01 19:19:41.130 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:19:42.785 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:19:43.041 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:19:43.391 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:19:43.614 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:19:43.894 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:19:44.132 [main] LoggerLoad - HTTP/1.1 200 
+[INFO ] 2024-04-01 19:19:44.472 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:19:49.851 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:19:50.931 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:19:51.239 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:36:40.318 [main] LoggerLoad - User Logged In
+[INFO ] 2024-04-01 19:36:47.385 [main] LoggerLoad - Failed to create new User as phone number 1467123483 already exists !!
+[INFO ] 2024-04-01 19:36:47.400 [main] LoggerLoad - Failed to create new User as phone number 1467123484 already exists !!
+[INFO ] 2024-04-01 19:36:47.413 [main] LoggerLoad - Failed to create new User as phone number 1467123485 already exists !!
+[INFO ] 2024-04-01 19:36:47.427 [main] LoggerLoad - Enter phone no in this format (CountryCode)(PhoneNo) +91 1234567890
+[INFO ] 2024-04-01 19:36:47.438 [main] LoggerLoad - Invalid Status: must be Active or Inactive
+[INFO ] 2024-04-01 19:36:47.450 [main] LoggerLoad - Failed to create user, as 'roleId' is invalid !! 
+[INFO ] 2024-04-01 19:36:47.464 [main] LoggerLoad - Failed to create user, as 'TimeZone' is invalid !! 
+[INFO ] 2024-04-01 19:36:47.475 [main] LoggerLoad - Failed to create user, as 'Visa Status' is invalid !! 
+[INFO ] 2024-04-01 19:36:47.488 [main] LoggerLoad - userLinkedinUrlmust contain www.linkedin.com
+[INFO ] 2024-04-01 19:36:47.502 [main] LoggerLoad - null
+[INFO ] 2024-04-01 19:36:47.514 [main] LoggerLoad - Failed to create new User as phone number 4467123411 already exists !!
+[INFO ] 2024-04-01 19:36:47.524 [main] LoggerLoad - Failed to create new User as phone number 4567123412 already exists !!
+[INFO ] 2024-04-01 19:36:47.537 [main] LoggerLoad - Failed to create new User as phone number 4565123413 already exists !!
+[INFO ] 2024-04-01 19:36:47.548 [main] LoggerLoad - Failed to create new User as phone number 4467123414 already exists !!
+[INFO ] 2024-04-01 19:36:47.556 [main] LoggerLoad - Failed to create new User as phone number 4467123415 already exists !!
+[INFO ] 2024-04-01 19:36:47.568 [main] LoggerLoad - userLinkedinUrlmust contain www.linkedin.com
+[INFO ] 2024-04-01 19:36:47.582 [main] LoggerLoad - Invalid Status: must be Active or Inactive
+[INFO ] 2024-04-01 19:36:47.592 [main] LoggerLoad - Failed to create new User as phone number 4467123418 already exists !!
+[INFO ] 2024-04-01 19:36:47.603 [main] LoggerLoad - Failed to create new User as phone number 4467123419 already exists !!
+[INFO ] 2024-04-01 19:36:47.615 [main] LoggerLoad - Failed to create user, as 'roleId' is invalid !! 
+[INFO ] 2024-04-01 19:36:47.628 [main] LoggerLoad - Failed to create user, as 'TimeZone' is invalid !! 
+[INFO ] 2024-04-01 19:36:47.638 [main] LoggerLoad - Failed to create user, as 'Visa Status' is invalid !! 
+[INFO ] 2024-04-01 19:36:47.650 [main] LoggerLoad - Failed to create new User as phone number 1467123483 already exists !!
+[INFO ] 2024-04-01 19:36:47.662 [main] LoggerLoad - Failed to create new UserLogin as email already exists!
+[INFO ] 2024-04-01 19:36:47.675 [main] LoggerLoad - Failed to create new User as phone number 1467123483 already exists !!
+[INFO ] 2024-04-01 19:36:49.165 [main] LoggerLoad - HTTP/1.1 200 
+[INFO ] 2024-04-01 19:36:49.538 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:36:50.391 [main] LoggerLoad - HTTP/1.1 200 
+[INFO ] 2024-04-01 19:36:50.640 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:36:51.502 [main] LoggerLoad - HTTP/1.1 200 
+[INFO ] 2024-04-01 19:36:51.744 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:36:53.341 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:36:53.593 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:36:53.934 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:36:54.175 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:36:54.459 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:36:54.692 [main] LoggerLoad - HTTP/1.1 200 
+[INFO ] 2024-04-01 19:36:55.043 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:37:00.223 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:37:01.311 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:37:01.658 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:45:06.372 [main] LoggerLoad - User Logged In
+[INFO ] 2024-04-01 19:45:15.517 [main] LoggerLoad - the validation is success
+[INFO ] 2024-04-01 19:45:15.565 [main] LoggerLoad - the validation is success
+[INFO ] 2024-04-01 19:45:15.617 [main] LoggerLoad - the validation is success
+[INFO ] 2024-04-01 19:45:15.627 [main] LoggerLoad - Enter phone no in this format (CountryCode)(PhoneNo) +91 1234567890
+[INFO ] 2024-04-01 19:45:15.637 [main] LoggerLoad - Invalid Status: must be Active or Inactive
+[INFO ] 2024-04-01 19:45:15.653 [main] LoggerLoad - Failed to create user, as 'roleId' is invalid !! 
+[INFO ] 2024-04-01 19:45:15.664 [main] LoggerLoad - Failed to create user, as 'TimeZone' is invalid !! 
+[INFO ] 2024-04-01 19:45:15.675 [main] LoggerLoad - Failed to create user, as 'Visa Status' is invalid !! 
+[INFO ] 2024-04-01 19:45:15.692 [main] LoggerLoad - userLinkedinUrlmust contain www.linkedin.com
+[INFO ] 2024-04-01 19:45:15.706 [main] LoggerLoad - null
+[INFO ] 2024-04-01 19:45:15.716 [main] LoggerLoad - Failed to create new User as phone number 4467123411 already exists !!
+[INFO ] 2024-04-01 19:45:15.725 [main] LoggerLoad - Failed to create new User as phone number 4567123412 already exists !!
+[INFO ] 2024-04-01 19:45:15.735 [main] LoggerLoad - Failed to create new User as phone number 4565123413 already exists !!
+[INFO ] 2024-04-01 19:45:15.745 [main] LoggerLoad - Failed to create new User as phone number 4467123414 already exists !!
+[INFO ] 2024-04-01 19:45:15.754 [main] LoggerLoad - Failed to create new User as phone number 4467123415 already exists !!
+[INFO ] 2024-04-01 19:45:15.764 [main] LoggerLoad - userLinkedinUrlmust contain www.linkedin.com
+[INFO ] 2024-04-01 19:45:15.773 [main] LoggerLoad - Invalid Status: must be Active or Inactive
+[INFO ] 2024-04-01 19:45:15.783 [main] LoggerLoad - Failed to create new User as phone number 4467123418 already exists !!
+[INFO ] 2024-04-01 19:45:15.794 [main] LoggerLoad - Failed to create new User as phone number 4467123419 already exists !!
+[INFO ] 2024-04-01 19:45:15.805 [main] LoggerLoad - Failed to create user, as 'roleId' is invalid !! 
+[INFO ] 2024-04-01 19:45:15.814 [main] LoggerLoad - Failed to create user, as 'TimeZone' is invalid !! 
+[INFO ] 2024-04-01 19:45:15.824 [main] LoggerLoad - Failed to create user, as 'Visa Status' is invalid !! 
+[INFO ] 2024-04-01 19:45:15.834 [main] LoggerLoad - Failed to create new User as phone number 1467123483 already exists !!
+[INFO ] 2024-04-01 19:45:15.844 [main] LoggerLoad - Failed to create new UserLogin as email already exists!
+[INFO ] 2024-04-01 19:45:15.856 [main] LoggerLoad - Failed to create new User as phone number 1467123483 already exists !!
+[INFO ] 2024-04-01 19:45:17.288 [main] LoggerLoad - HTTP/1.1 200 
+[INFO ] 2024-04-01 19:45:17.657 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:45:18.499 [main] LoggerLoad - HTTP/1.1 200 
+[INFO ] 2024-04-01 19:45:18.778 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:45:19.626 [main] LoggerLoad - HTTP/1.1 200 
+[INFO ] 2024-04-01 19:45:19.883 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:45:22.671 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:45:22.933 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:45:23.339 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:45:24.143 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:45:24.396 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:45:24.647 [main] LoggerLoad - HTTP/1.1 200 
+[INFO ] 2024-04-01 19:45:24.899 [main] LoggerLoad - HTTP/1.1 200 
+[INFO ] 2024-04-01 19:45:25.398 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:45:25.635 [main] LoggerLoad - HTTP/1.1 200 
+[INFO ] 2024-04-01 19:45:25.879 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:45:31.296 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:45:32.416 [main] LoggerLoad - HTTP/1.1 404 
+[INFO ] 2024-04-01 19:45:32.661 [main] LoggerLoad - HTTP/1.1 404 
