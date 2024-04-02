@@ -5,14 +5,28 @@ import java.util.Map;
 
 public class payload {
 
-	public static String UserLogin(List<Map<String, String>> data, int i) {
-		String requestBody = "{\n" + "  \"password\": \"" + data.get(i).get("password") + "\",\n"
-				+ "  \"userLoginEmailId\": \"" + data.get(i).get("userLoginEmailId") + "\"\n" + "}";
-		// String maskedRequestBody =
-		// requestBody.replaceAll("\"password\":\\s*\"[^\"]+\"", "\"password\":
-		// \"*****\"");
+	public static String ProgramData(List<Map<String, String>> data,int i) {
+		String  requestBody = "{\n" +
+                 "  \"programDescription\": \"" + data.get(i).get("ProgramDescription") + "\",\n" +
+                 "  \"programName\": \"" + data.get(i).get("ProgramName") + "\",\n" +
+                 "  \"programStatus\": \"" + data.get(i).get("ProgramStatus") + "\"\n" +
+                 "}";
 		return requestBody;
 	}
+		public static String UpdateProgramData(List<Map<String, String>> data,int i) {
+			String  requestBody = "{\n" +
+	                 "  \"programDescription\": \"" + data.get(i).get("ProgramDescription") + "\",\n" +
+	                 "  \"programName\": \"" + data.get(i).get("UpdateProgramByProgramName") + "\",\n" +
+	                 "  \"programStatus\": \"" + data.get(i).get("UpdatedStatus") + "\"\n" +
+	                 "}";
+			return requestBody;
+			}
+		
+
+			
+		
+}
+
 	
 	public static String UserLoginInvalidCredential() {
 		String requestBody = "{\n" + "  \"password\": \"Test123\",\n"
@@ -256,5 +270,4 @@ public static String DummyRequestBody()
 
 	}
 }
-
 

@@ -63,4 +63,16 @@ public class RequestSpec extends AbstractMethod {
 	
 
 
+	@Override
+	public RequestSpecification createReqwithInvalidBaseurl(String endpoint) {
+		req.setBaseUri(URLs.InvalidBaseURL);
+		req.setBasePath(endpoint);
+		req.setContentType(ContentType.JSON);
+		req.setAccept(ContentType.JSON);
+		req.addHeader("Authorization", "Bearer "+auth.setAuthorisation());
+		RequestSpecification reqspec = req.build();
+		return reqspec;
+		
+	}
+
 }
