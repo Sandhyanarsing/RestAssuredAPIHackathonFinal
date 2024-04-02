@@ -66,6 +66,24 @@ Feature: Program Module
  Given Admin creates GET Request for the LMS API with invalid endpointpm
  When Admin sends HTTPS Request with invalid enpointpm
  Then Admin receives appropriate Status code with response body inpm
+
+ @18UpdateprogramwithprogramnamewithInvalidendpoit
+ Scenario: Check if Admin able to update a program with  invalid endpoint 
+ Given Admin creates PUT Request for the LMS API with invalid endpointpm
+ When Admin sends HTTPS Request with invalid endpoint updatepm
+ Then Admin receives Status with message and boolean success details invalid endpoint update programnamepm
+ 
+ @19UpdateprogramwithprogramnamewithInvalidMethod
+  Scenario: Check if Admin able to update a program with  invalid method
+ Given Admin creates PUT Request for the LMS API endpoint with valid request Body with invalid methodpm
+ When Admin sends HTTPS Request with invalid method using programnamepm
+ Then Admin receives Status with message and boolean success details invalidmethod using programnamepm
+ 
+ @20UpdateprogramwithprogramnamewithInvalidBaseurl
+  Scenario: Check if Admin able to update a program with invalid baseurl
+ Given Admin creates PUT Request for the LMS API endpoint with valid request Body with invalid baseurlpm
+ When Admin sends HTTPS Request with invalid endpoint update with invalid baseurlusing programnamepm
+ Then Admin receives Status with message and boolean success details with invalid baseurlusing programnamepm
  
  
  
